@@ -26,13 +26,6 @@ std_msgs::Int32 rpm_msg;
 
 int servo_command = 0;
 
-
-
-
-
-
-
-
 //--Booleans
 bool one = true;
 //Ultrasonic Sensors

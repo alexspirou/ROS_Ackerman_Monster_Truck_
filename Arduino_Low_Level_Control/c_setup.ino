@@ -20,7 +20,7 @@ void setup() {
   nh.getHardware()->setBaud(57600);
   //  Serial.println("Serial Begin");
   nh.initNode();
-   //ROS--Publishers-Subscribers
+  //ROS--Publishers-Subscribers
   nh.subscribe(motor);
   nh.subscribe(servo);
   nh.advertise(optical_encoder_publisher);
