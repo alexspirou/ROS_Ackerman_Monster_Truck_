@@ -17,7 +17,6 @@ movement
 obstacle_avoidance
 publishers
 speed_limiter
-subscribers
 )
 
 
@@ -26,9 +25,9 @@ src/movement/Move.cpp src/movement/Move.h
 src/movement/Motor.cpp src/movement/Motor.h
 src/movement/Servo.cpp src/movement/Servo.h
 src/obstacle_avoidance/UltrasonicSensors.cpp src/obstacle_avoidance/UltrasonicSensors.h
-src/publishers/Publishers.cpp src/publishers/Publishers.h
+src/publishers_subscribers/Publishers.h src/publishers_subscribers/Subscribers.h
 src/speed_limiter/OpticalEncoder.cpp src/speed_limiter/OpticalEncoder.h
-src/subscribers/Subscribers.cpp src/subscribers/Subscribers.h
+
 )
 
 target_link_libraries(Monster_Truck ${catkin_LIBRARIES})
