@@ -2,38 +2,37 @@
 #include "std_msgs/String.h"
 #include "geometry_msgs/Twist.h"
 #include <sstream>
-#include "publishers/Publishers.h"
+#include "publishers_subscribers/Publishers.h"
+#include "movement/Motor.h"
+#include <string>
+#include "obstacle_avoidance/UltrasonicSensors.h"
+int u1_callback()
+{
+    int i = 0;
+    return i;
 
+}
 int main(int argc, char **argv)
 {
 
 
   ros::init(argc, argv, "Monster_Truck");
-  Publishers* pub = new Publishers;
-
-//  ros::NodeHandle n;
-//  geometry_msgs::Twist motor;
-
-
-
-  ros::Rate loop_rate(10);
-//  ros::Publisher motor_pub = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
-
-
+  ros::Rate loop_rate(20);
+  UltrasonicSensors* u1_ = new UltrasonicSensors();
 
 
 
   while (ros::ok())
   {
+   const char* topic_name = "ultrasonic_sensor_middle";
 
-   pub->motor_pub(50);
-//  motor.linear.x = 0;
-//  motor_pub.publish(motor);
-  loop_rate.sleep();
-    ros::spinOnce();
+   loop_rate.sleep();
+   u1_->ultrasonic(topic_name);
+   loop_rate.sleep();
+   ros::spinOnce();
 
   }
 
-  delete pub;
+
   return 0;
 }
