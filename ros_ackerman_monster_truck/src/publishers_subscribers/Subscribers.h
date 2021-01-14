@@ -3,20 +3,15 @@
 #include "ros/ros.h"
 #include <string>
 #include <std_msgs/UInt16.h>
-class Subscribers
+struct Subscribers
 {
 
-public:
-Subscribers();
-~Subscribers();
-
-void subscribe(ros::Subscriber& subscriber, const char* topic_name, ros::NodeHandle& n,  std_msgs::UInt16callback)
+    Subscribers() {}
+    ~Subscribers(){}
+template<typename T>
+void subscribe(ros::Subscriber& subscriber, const char* topic_name, ros::NodeHandle& n,  T callback)
 {
    subscriber = n.subscribe(topic_name, 1000, callback);
 }
-
-
-
-
 };
 #endif

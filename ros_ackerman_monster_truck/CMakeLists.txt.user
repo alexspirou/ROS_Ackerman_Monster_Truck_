@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2021-01-12T20:19:23. -->
+<!-- Written by QtCreator 4.9.2, 2021-01-14T22:05:27. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -65,7 +65,7 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{dd496edb-18e9-47bc-8ee1-58f9974c8934}</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
@@ -76,7 +76,7 @@
      <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
      <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
      <value type="QString">unset CMAKE_INSTALL_PREFIX</value>
-     <value type="QString">unset CMAKE_PREFIX_PATH</value>
+     <value type="QString">CMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}</value>
      <value type="QString">unset DOXYGEN_EXECUTABLE</value>
      <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     </valuelist>
@@ -122,7 +122,15 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <valuelist type="QVariantList" key="CMake.Configuration">
-     <value type="QString">CMAKE_BUILD_TYPE:STRING=Debug</value>
+     <value type="QString">unset CMAKE_BUILD_TYPE</value>
+     <value type="QString">unset CMAKE_CODEBLOCKS_EXECUTABLE</value>
+     <value type="QString">unset CMAKE_CODEBLOCKS_MAKE_ARGUMENTS</value>
+     <value type="QString">CMAKE_CXX_COMPILER:STRING=%{Compiler:Executable:Cxx}</value>
+     <value type="QString">CMAKE_C_COMPILER:STRING=%{Compiler:Executable:C}</value>
+     <value type="QString">unset CMAKE_INSTALL_PREFIX</value>
+     <value type="QString">unset CMAKE_PREFIX_PATH</value>
+     <value type="QString">unset DOXYGEN_EXECUTABLE</value>
+     <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     </valuelist>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/alex/ros_monster_truck/src/build-ros_ackerman_monster_truck-Desktop-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
@@ -375,7 +383,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/tmp/QtCreator-LVntja/qtc-cmake-OCYslaaG/devel/lib/ros_ackerman_monster_truck</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/alex/ros_monster_truck/src/build-ros_ackerman_monster_truck-Desktop-Default/devel/lib/ros_ackerman_monster_truck</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

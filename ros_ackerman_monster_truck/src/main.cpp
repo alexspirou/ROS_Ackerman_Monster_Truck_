@@ -6,28 +6,24 @@
 #include "movement/Motor.h"
 #include <string>
 #include "obstacle_avoidance/UltrasonicSensors.h"
-int u1_callback()
-{
-    int i = 0;
-    return i;
 
-}
+
 int main(int argc, char **argv)
 {
 
 
-  ros::init(argc, argv, "Monster_Truck");
+  ros::init(argc, argv, "s");
   ros::Rate loop_rate(20);
-  UltrasonicSensors* u1_ = new UltrasonicSensors();
-
-
-
+  ros::NodeHandle n;
+  ros::Publisher publisher_name = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
+  geometry_msgs::Twist msg;
+  msg.linear.x = 40;
   while (ros::ok())
   {
-   const char* topic_name = "ultrasonic_sensor_middle";
 
    loop_rate.sleep();
-   u1_->ultrasonic(topic_name);
+//   motor->move_front(speed);
+   publisher_name.publish(msg);
    loop_rate.sleep();
    ros::spinOnce();
 

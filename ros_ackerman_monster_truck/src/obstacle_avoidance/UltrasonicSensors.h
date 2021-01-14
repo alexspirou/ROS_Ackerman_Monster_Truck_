@@ -7,19 +7,20 @@ class UltrasonicSensors
 {
 
 public:
-UltrasonicSensors();
-~UltrasonicSensors();
+    UltrasonicSensors() {}
+    ~UltrasonicSensors(){}
 
-int u1_callback();
-void ultrasonic(const char* topic_name);
+static void u1_callback(const std_msgs::UInt16& us_msg);
+static void u2_callback(const std_msgs::UInt16& us_msg);
+static void u3_callback(const std_msgs::UInt16& us_msg);
+void ultrasonic();
 
 
 
 private:
-ros::NodeHandle nh;
-ros::Subscriber subscriber;
-Subscribers* sub = new Subscribers();
-std_msgs::UInt16 us_msg;
+ros::NodeHandle m_nh;
+ros::Subscriber m_subscriber;
+Subscribers* m_sub = new Subscribers();
 
 };
 #endif

@@ -1,18 +1,15 @@
 #include "UltrasonicSensors.h"
-UltrasonicSensors::UltrasonicSensors()
-{
-}
-UltrasonicSensors::~UltrasonicSensors()
-{
-}
-int UltrasonicSensors::u1_callback()
-{
 
-    ROS_INFO("[%i]" , us_msg.data );
-    return us_msg.data;
-}
-void UltrasonicSensors::ultrasonic(const char* topic_name)
-{
+void UltrasonicSensors::u1_callback(const std_msgs::UInt16& us_msg)
+{ROS_INFO("[%i]" , us_msg.data );}
+void UltrasonicSensors::u2_callback(const std_msgs::UInt16& us_msg)
+{ROS_INFO("[%i]" , us_msg.data );}
+void UltrasonicSensors::u3_callback(const std_msgs::UInt16& us_msg)
+{ROS_INFO("[%i]" , us_msg.data );}
 
-    sub->subscribe<std_msgs::UInt16>(subscriber, topic_name, nh, us_msg);
+void UltrasonicSensors::ultrasonic()
+{
+    m_sub->subscribe(m_subscriber, "ultrasonic_sensor_middle", m_nh, u1_callback);
+    m_sub->subscribe(m_subscriber, "ultrasonic_sensor_left", m_nh, u2_callback);
+    m_sub->subscribe(m_subscriber, "ultrasonic_sensor_right", m_nh, u3_callback);
 }
