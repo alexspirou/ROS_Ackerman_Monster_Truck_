@@ -6,25 +6,26 @@
 #include "movement/Motor.h"
 #include <string>
 #include "obstacle_avoidance/UltrasonicSensors.h"
-
+#include <std_msgs/Int32.h>
 
 int main(int argc, char **argv)
 {
 
-
   ros::init(argc, argv, "s");
+  UltrasonicSensors* u1_ = new UltrasonicSensors();
+  Motor* m1 = new Motor();
   ros::Rate loop_rate(20);
-  ros::NodeHandle n;
-  ros::Publisher publisher_name = n.advertise<geometry_msgs::Twist>("cmd_vel", 1000);
-  geometry_msgs::Twist msg;
-  msg.linear.x = 40;
+int speed = 30;
   while (ros::ok())
   {
 
-   loop_rate.sleep();
-//   motor->move_front(speed);
-   publisher_name.publish(msg);
-   loop_rate.sleep();
+
+
+   if (u1_->ultrasonic() < 25)
+   {
+       m1->move_front(speed);
+   }
+
    ros::spinOnce();
 
   }

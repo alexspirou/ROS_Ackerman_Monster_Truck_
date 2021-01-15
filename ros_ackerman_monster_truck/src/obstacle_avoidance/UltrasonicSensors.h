@@ -1,7 +1,7 @@
 #ifndef ULTRASONICSENSORS_H
 #define ULTRASONICSENSORS_H
 #include "ros/ros.h"
-#include <std_msgs/UInt16.h>
+#include <std_msgs/Int32.h>
 #include "../publishers_subscribers/Subscribers.h"
 class UltrasonicSensors
 {
@@ -10,10 +10,10 @@ public:
     UltrasonicSensors() {}
     ~UltrasonicSensors(){}
 
-static void u1_callback(const std_msgs::UInt16& us_msg);
-static void u2_callback(const std_msgs::UInt16& us_msg);
-static void u3_callback(const std_msgs::UInt16& us_msg);
-void ultrasonic();
+static void u1_callback(const std_msgs::Int32& us_msg);
+static void u2_callback(const std_msgs::Int32& us_msg);
+static void u3_callback(const std_msgs::Int32& us_msg);
+int ultrasonic();
 
 
 
@@ -21,6 +21,6 @@ private:
 ros::NodeHandle m_nh;
 ros::Subscriber m_subscriber;
 Subscribers* m_sub = new Subscribers();
-
+static std_msgs::Int32 m_msg;
 };
 #endif
