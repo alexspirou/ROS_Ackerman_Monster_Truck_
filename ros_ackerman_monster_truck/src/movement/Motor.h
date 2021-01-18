@@ -19,7 +19,7 @@ private:
 ros::NodeHandle nh;
 ros::Publisher motor_pub;
 geometry_msgs::Twist msg;
-std::string cmd_vel = "cmd_vel";
+const char* cmd_vel = "cmd_vel";
 Publishers* pub = new Publishers();
 
 };

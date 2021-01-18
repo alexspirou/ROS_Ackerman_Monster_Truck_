@@ -13,14 +13,14 @@ public:
 static void u1_callback(const std_msgs::Int32& us_msg);
 static void u2_callback(const std_msgs::Int32& us_msg);
 static void u3_callback(const std_msgs::Int32& us_msg);
-int ultrasonic();
-
+int ultrasonic_sub(const char* topic_name);
+static std_msgs::Int32 m_msg;
 
 
 private:
 ros::NodeHandle m_nh;
 ros::Subscriber m_subscriber;
 Subscribers* m_sub = new Subscribers();
-static std_msgs::Int32 m_msg;
+
 };
 #endif

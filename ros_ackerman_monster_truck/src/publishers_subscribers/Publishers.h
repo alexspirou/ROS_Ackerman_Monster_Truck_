@@ -2,7 +2,7 @@
 #define PUBLISHERS_H
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
-#include <string>
+
 struct Publishers
 {
 public:
@@ -10,7 +10,7 @@ Publishers(){}
 ~Publishers(){}
 
 template<typename T>
-void init(ros::Publisher& publisher_name, std::string& topic_name, ros::NodeHandle& n)
+void init(ros::Publisher& publisher_name, const char* topic_name, ros::NodeHandle& n)
 {
     publisher_name = n.advertise<T>(topic_name, 1000);
 }
