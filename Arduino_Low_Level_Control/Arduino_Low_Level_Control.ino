@@ -1,23 +1,19 @@
-#include <ros.h>
+#include "ros.h"
 #include <geometry_msgs/Twist.h>
-#include <std_msgs/Empty.h>
-#include <std_msgs/String.h>
 #include <std_msgs/Int32.h>
 #include <std_msgs/UInt16.h>
-#include <ros/time.h>
 #include <sensor_msgs/Range.h>
 #include <Servo.h>
-
+#include <HardwareSerial.h>
 
 
 
 
 
 //--ROS
-ros::NodeHandle  nh; 
+ros::NodeHandle* nh = new ros::NodeHandle();
 
 //--Variables for each message
-std_msgs::String str_msg;
 ///
 std_msgs::Int32 ultrasonic_sensor_middle;
 std_msgs::Int32 ultrasonic_sensor_left;
@@ -54,15 +50,10 @@ int sp = 0;
 #define enc  2
 
 volatile long encoder_value = 0;
-
 int interval = 1000;
 long previus_millis = 0;
 long current_millis = 0;
 int rpm = 0;
-int i =0;
-int last_state = 0;
-int desirable_rpm = 8;
-const int safety_speed = 50; 
 
 
 //--Function prototyping

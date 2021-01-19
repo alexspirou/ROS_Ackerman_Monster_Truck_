@@ -16,17 +16,17 @@ void setup() {
   //Optical Encoder
   pinMode(enc, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
-
-  nh.getHardware()->setBaud(57600);
-  //  Serial.println("Serial Begin");
-  nh.initNode();
+  
+  nh->getHardware()->setBaud(57600);
+  nh->initNode();
+ 
   //ROS--Publishers-Subscribers
-  nh.subscribe(motor);
-  nh.subscribe(servo);
-  nh.advertise(optical_encoder_publisher);
-  nh.advertise(ultrasonic_sensor_middle_publisher);
-  nh.advertise(ultrasonic_sensor_left_publisher);
-  nh.advertise(ultrasonic_sensor_right_publisher);
+  nh->subscribe(motor);
+  nh->subscribe(servo);
+  nh->advertise(optical_encoder_publisher);
+  nh->advertise(ultrasonic_sensor_middle_publisher);
+  nh->advertise(ultrasonic_sensor_left_publisher);
+  nh->advertise(ultrasonic_sensor_right_publisher);
 
   
 }
