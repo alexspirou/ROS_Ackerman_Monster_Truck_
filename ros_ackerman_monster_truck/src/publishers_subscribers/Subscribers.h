@@ -11,7 +11,7 @@ struct Subscribers
 template<typename T>
 void subscribe(ros::Subscriber& subscriber, const char* topic_name, ros::NodeHandle& n,  T callback)
 {
-   subscriber = n.subscribe(topic_name, 1000, callback);
+   subscriber = n.subscribe(topic_name, 100, callback);
 }
 };
 #endif

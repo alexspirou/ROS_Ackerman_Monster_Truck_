@@ -16,28 +16,22 @@ int main(int argc, char **argv)
   UltrasonicSensors* u1_ = new UltrasonicSensors();
   Motor* m1 = new Motor();
   Servo* s1 = new Servo();
-  ros::Rate loop_rate(40);
+  ros::Rate loop_rate(1000);
   int counter =0;
-int speed = 30;
+int speed = 0;
+int speed2 = 20;
   while (ros::ok())
   {
 
 
-   if (counter %2){
-        s1->turn_left();
-        loop_rate.sleep();
-   }
-   else
-   {
-       s1->turn_right();
-       loop_rate.sleep();
-   }
-   counter ++;
-   ROS_INFO("counter = i%", counter);
+    u1_->ultrasonic_sub();
+    m1->move_front(speed);
+    loop_rate.sleep();
+    m1->move_front(speed2);
+    loop_rate.sleep();
    ros::spinOnce();
 
   }
-
 
   return 0;
 }

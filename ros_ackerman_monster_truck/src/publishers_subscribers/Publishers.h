@@ -12,7 +12,7 @@ Publishers(){}
 template<typename T>
 void init(ros::Publisher& publisher_name, const char* topic_name, ros::NodeHandle& n)
 {
-    publisher_name = n.advertise<T>(topic_name, 1000);
+    publisher_name = n.advertise<T>(topic_name, 100);
 }
 template<typename T>
 void publish(ros::Publisher& publisher_name, T& msg)
