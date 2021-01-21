@@ -5,7 +5,7 @@
 #include <sensor_msgs/Range.h>
 #include <Servo.h>
 #include <HardwareSerial.h>
-
+#include <geometry_msgs/Vector3.h>
 
 
 
@@ -15,9 +15,9 @@ ros::NodeHandle* nh = new ros::NodeHandle();
 
 //--Variables for each message
 ///
-std_msgs::Int32 ultrasonic_sensor_middle;
-std_msgs::Int32 ultrasonic_sensor_left;
-std_msgs::Int32 ultrasonic_sensor_right;
+geometry_msgs::Vector3 ultrasonic_sensors; //ultrasonic_sensors.x ->middle
+                                           //ultrasonic_sensors.y ->right
+                                           //ultrasonic_sensors.z ->left
 std_msgs::Int32 rpm_msg;
 
 int servo_command = 0;
@@ -62,9 +62,7 @@ int rpm = 0;
 void callback_motors(const geometry_msgs::Twist& cmd_vel);
 void callback_servo(const std_msgs::UInt16& servo_msg);
 void rpm_publisher();
-void ultrasonic_sensor_middle_publisher_call();
-void ultrasonic_sensor_right_publisher_call();
-void ultrasonic_sensor_left_publisher_call();
+void ultrasonic_sensors_publisher_call();
 
 //--Ultrasonic
 int u1();

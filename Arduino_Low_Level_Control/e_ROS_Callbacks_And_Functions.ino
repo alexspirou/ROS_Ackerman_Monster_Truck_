@@ -4,7 +4,7 @@ void callback_motors(const geometry_msgs::Twist& cmd_vel)
   sp = cmd_vel.linear.x; 
 }
 
-void callback_servo(const std_msgs::UInt16& servo_msg)
+void callback_servo  (const std_msgs::UInt16& servo_msg)
 {
   servo_command = servo_msg.data;
 }
@@ -16,21 +16,10 @@ void rpm_publisher()
 }
 
 //--Publisher for U1
-void ultrasonic_sensor_middle_publisher_call()
+void ultrasonic_sensors_publisher_call()
 {
-   ultrasonic_sensor_middle.data = u1();
-  ultrasonic_sensor_middle_publisher.publish(&ultrasonic_sensor_middle);
-}
-//--Publisher for U2
-void ultrasonic_sensor_right_publisher_call()
-{
-  ultrasonic_sensor_right.data = u2();
-  ultrasonic_sensor_right_publisher.publish(&ultrasonic_sensor_right);
-}
-//--Publisher for U3
-void ultrasonic_sensor_left_publisher_call()
-{
-  
-  ultrasonic_sensor_left.data = u3();
-  ultrasonic_sensor_left_publisher.publish(&ultrasonic_sensor_left);
+  ultrasonic_sensors.x = u1();
+  ultrasonic_sensors.y = u2();
+  ultrasonic_sensors.z = u3();
+  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
 }

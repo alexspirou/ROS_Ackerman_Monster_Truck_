@@ -7,11 +7,9 @@ void loop() {
   turn_left();
 //--Publishers
   rpm_publisher();
-  ultrasonic_sensor_middle_publisher_call();
-  ultrasonic_sensor_left_publisher_call();
-  ultrasonic_sensor_right_publisher_call();
+  ultrasonic_sensors_publisher_call();
 
   nh->spinOnce();
   
-  delay(100);
+  delay(1);
 }

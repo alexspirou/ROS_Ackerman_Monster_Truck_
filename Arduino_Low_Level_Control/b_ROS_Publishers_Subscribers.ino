@@ -1,8 +1,7 @@
 //--Publishers
 ros::Publisher  optical_encoder_publisher("optical_encoder", &rpm_msg); 
-ros::Publisher  ultrasonic_sensor_middle_publisher("ultrasonic_sensor_middle", &ultrasonic_sensor_middle); 
-ros::Publisher  ultrasonic_sensor_left_publisher("ultrasonic_sensor_left", &ultrasonic_sensor_left); 
-ros::Publisher  ultrasonic_sensor_right_publisher("ultrasonic_sensor_right", &ultrasonic_sensor_right); 
+ros::Publisher  ultrasonic_sensors_publisher("ultrasonic_sensors", &ultrasonic_sensors); 
+
 
 //--Subscribers
 //Motor Suscriber

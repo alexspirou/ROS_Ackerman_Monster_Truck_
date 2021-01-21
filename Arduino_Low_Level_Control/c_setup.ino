@@ -24,9 +24,8 @@ void setup() {
   nh->subscribe(motor);
   nh->subscribe(servo);
   nh->advertise(optical_encoder_publisher);
-  nh->advertise(ultrasonic_sensor_middle_publisher);
-  nh->advertise(ultrasonic_sensor_left_publisher);
-  nh->advertise(ultrasonic_sensor_right_publisher);
+  nh->advertise(ultrasonic_sensors_publisher);
+
 
   
 }
