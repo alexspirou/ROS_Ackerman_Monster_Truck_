@@ -24,7 +24,7 @@ add_executable(Monster_Truck src/main.cpp
 src/movement/Move.cpp src/movement/Move.h
 src/movement/Motor.cpp src/movement/Motor.h
 src/movement/Servo.cpp src/movement/Servo.h
-src/obstacle_avoidance/UltrasonicSensors.cpp src/obstacle_avoidance/UltrasonicSensors.h
+src/obstacle_avoidance/UltrasonicSensors.h
 src/publishers_subscribers/Publishers.h src/publishers_subscribers/Subscribers.h
 src/speed_limiter/OpticalEncoder.cpp src/speed_limiter/OpticalEncoder.h
 

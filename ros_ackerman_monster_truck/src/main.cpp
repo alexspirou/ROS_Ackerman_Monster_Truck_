@@ -6,32 +6,44 @@
 #include "movement/Motor.h"
 #include <string>
 #include "obstacle_avoidance/UltrasonicSensors.h"
-#include <std_msgs/Int32.h>
 #include "movement/Servo.h"
-
+#include "speed_limiter/OpticalEncoder.h"
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;     // sleep_for, sleep_until
+using namespace std::chrono_literals;
+using std::chrono::system_clock;
 int main(int argc, char **argv)
 {
 
   ros::init(argc, argv, "s");
   UltrasonicSensors* u1_ = new UltrasonicSensors();
-  Motor* m1 = new Motor();
+  static Motor* m1 = new Motor();
   Servo* s1 = new Servo();
-  ros::Rate loop_rate(1000);
-  int counter =0;
-int speed = 0;
-int speed2 = 20;
+  OpticalEncoder* o1 = new OpticalEncoder();
+    ros::Rate loop_rate(2000);
+  int speed = 50;
+  double safe = 20;
   while (ros::ok())
   {
 
 
-    u1_->ultrasonic_sub();
-    m1->move_front(speed);
-    loop_rate.sleep();
-    m1->move_front(speed2);
-    loop_rate.sleep();
-   ros::spinOnce();
 
+
+   if(ultrasonic_msg.y > safe){
+
+       m1->move_front(speed);
+   }
+   else{
+       speed = 0;
+       m1->stop(speed);
+
+   }
+   sleep_for(0.5s);
+   sleep_until(system_clock::now() + 0.2s);
+   ros::spinOnce();
   }
 
   return 0;
-}
+    }
+
