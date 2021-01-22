@@ -18,7 +18,7 @@ public:
     ~UltrasonicSensors(){}
 
     static void u1_callback(const geometry_msgs::Vector3 us_msg){
-//        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg.x, us_msg.y , us_msg.z );
+       ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg.x, us_msg.y , us_msg.z );
         ultrasonic_msg = us_msg;
     }
 private:

@@ -22,7 +22,7 @@ int main(int argc, char **argv)
   Servo* s1 = new Servo();
   OpticalEncoder* o1 = new OpticalEncoder();
     ros::Rate loop_rate(2000);
-  int speed = 50;
+  int speed = 30;
   double safe = 20;
   while (ros::ok())
   {
@@ -31,19 +31,19 @@ int main(int argc, char **argv)
 
 
    if(ultrasonic_msg.y > safe){
-
+       speed = 50;
+       m1->move_front(speed);
+       }
+   else if (ultrasonic_msg.y < safe){
+       speed = 0;
        m1->move_front(speed);
    }
-   else{
-       speed = 0;
-       m1->stop(speed);
 
-   }
-   sleep_for(0.5s);
-   sleep_until(system_clock::now() + 0.2s);
+//   sleep_for(0.1s);
+   sleep_until(system_clock::now() + 0.1s);
    ros::spinOnce();
-  }
 
+}
   return 0;
     }
 

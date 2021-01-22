@@ -14,9 +14,9 @@ Motor();
 void move_front(int& x);
 void move_back(int& x);
 void stop(int x);
-
-private:
 ros::NodeHandle nh;
+private:
+
 ros::Publisher motor_pub;
 geometry_msgs::Twist msg;
 const char* cmd_vel = "cmd_vel";
