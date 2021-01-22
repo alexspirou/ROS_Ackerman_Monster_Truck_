@@ -1,5 +1,5 @@
 void loop() {
-//--Subscirbers
+--Subscirbers
   move_for(sp);
   move_backwards(sp);
   stop_stop(sp);
@@ -11,5 +11,5 @@ void loop() {
 
   nh->spinOnce();
   
-  delay(1);
+//  delay(1);
 }

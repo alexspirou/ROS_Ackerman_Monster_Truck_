@@ -17,7 +17,7 @@ void setup() {
   pinMode(enc, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
   
-  nh->getHardware()->setBaud(57600);
+  nh->getHardware()->setBaud(115200);
   nh->initNode();
  
   //ROS--Publishers-Subscribers
