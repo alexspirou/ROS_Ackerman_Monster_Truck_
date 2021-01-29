@@ -28,8 +28,8 @@ bool one = true;
 long duration; // variable for the duration of sound wave travel
 int distance; // variable for the distance measurement
 //--U1
-#define u1_echo A2
-#define u1_trig A3
+#define u1_echo A3
+#define u1_trig A2
 //--U2
 #define u2_echo A0
 #define u2_trig A1

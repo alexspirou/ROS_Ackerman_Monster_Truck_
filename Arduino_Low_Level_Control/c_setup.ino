@@ -16,7 +16,7 @@ void setup() {
   //Optical Encoder
   pinMode(enc, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
-  
+  Serial.begin(115200);
   nh->getHardware()->setBaud(115200);
   nh->initNode();
  
