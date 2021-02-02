@@ -13,6 +13,6 @@ void loop() {
 
   nh->spinOnce();
   
-   delay(10);
+   delay(1);
 
 }
