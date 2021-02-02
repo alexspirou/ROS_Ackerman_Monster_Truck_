@@ -5,7 +5,7 @@
 #include "../publishers_subscribers/Subscribers.h"
 #include "../movement/Motor.h"
 #include "../speed_limiter/OpticalEncoder.h"
-geometry_msgs::Vector3 ultrasonic_msg;
+static geometry_msgs::Vector3 ultrasonic_msg;
 class UltrasonicSensors
 {
 
@@ -15,7 +15,7 @@ public:
         static geometry_msgs::Vector3 ultrasonic_msg;
 
         }
-    ~UltrasonicSensors(){}
+    ~UltrasonicSensors(){delete m_sub;}
 
     static void u1_callback(const geometry_msgs::Vector3 us_msg){
        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg.x, us_msg.y , us_msg.z );
