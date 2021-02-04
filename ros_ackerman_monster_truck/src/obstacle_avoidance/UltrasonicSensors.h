@@ -8,7 +8,6 @@
 static geometry_msgs::Vector3 ultrasonic_msg;
 class UltrasonicSensors
 {
-
 public:
     UltrasonicSensors() {
         m_sub->subscribe(m_subscriber, "ultrasonic_sensors", m_nh, u1_callback);

@@ -6,35 +6,41 @@ Move::Move()
     servo = new Servo();
     oe = new OpticalEncoder();
     static std_msgs::Int32 rpm;
-
+    rpm_equal = rpm_less = rpm_greater = false;
 }
 
 void Move::navigation(){
-    rpm_limit(10);
+    rpm_equal = rpm_less = rpm_greater = false;
+    rpm_limit(14);
     motor->move_front(speed);
-
 }
 void Move::rpm_limit(int n){
 
-    while(rpm.data < n){
+    while(rpm.data < n && ! rpm_greater && !rpm_equal){
+        delay(1);
+        rpm_less = true;
         speed ++;
-        motor->move_front(speed);
-        ROS_INFO("RPM : %d", rpm.data);
-        break;
+        if(speed > safe_speed)
+            speed = safe_speed/2;
+        ROS_INFO("RPM: %d < N :%d ---Speed : %d", rpm.data, n, speed);
 
-    }
-    if(speed > safe_speed){
-        speed = safe_speed;
-    }
-    while(rpm.data > n){
-        speed --;
-        motor->move_front(speed);
-        ROS_INFO("RPM : %d", rpm.data);
         break;
+    }
 
+    while(rpm.data > n && !rpm_less && !rpm_equal){
+        delay(1);
+        speed  -= 1;
+        rpm_greater = true;
+        if (speed < safe_speed/2){
+            rpm_greater = false;
+            rpm_less =true;
+            break;
+        }
+        ROS_INFO("RPM: %d > N :%d ---Speed : %d", rpm.data, n, speed);
     }
-    if(speed > safe_speed){
-        speed = safe_speed;
+    while(rpm.data ==n && !rpm_greater && !rpm_less){
+        ROS_INFO("RPM: %d == N :%d ---Speed : %d", rpm.data, n, speed);
+        rpm_equal = true;
+        break;
     }
-    ROS_INFO("SPEED : %d", speed);
 }

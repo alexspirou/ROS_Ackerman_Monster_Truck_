@@ -15,13 +15,9 @@ public:
         }
     ~OpticalEncoder(){delete m_sub;}
     static void oe_callback(const std_msgs::Int32 us_msg){
-       ROS_INFO("OE: %d",us_msg.data );
+//       ROS_INFO("OE: %d",us_msg.data );
         rpm = us_msg;
     }
-
-//void speed_limiter(int& speed_limit);
-//static void set_msg(const std_msgs::Int32& oe_msg){m_msg.data = oe_msg.data;}
-//static int get_msg(){return m_msg.data;}
 private:
 ros::NodeHandle m_nh;
 ros::Subscriber m_subscriber;
