@@ -16,7 +16,9 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
        movement->navigation();
-       movement->delay(70);
+
+       movement->delay(40);
+
        ros::spinOnce();
   }
   delete movement;

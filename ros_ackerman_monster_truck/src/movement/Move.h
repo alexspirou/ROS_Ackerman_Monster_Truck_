@@ -18,7 +18,9 @@ Move();
 void delay(double mill_sec){ sleep_until(system_clock::now() + mill_sec*0.001s);
 }
 void navigation();
-void rpm_limit(int n);
+void rpm_limit();
+void desirable_rpm();
+
 
 private:
 Motor* motor;
@@ -26,8 +28,9 @@ Servo* servo;
 OpticalEncoder* oe;
 int speed{0};
 int safe_speed{35};
-bool rpm_equal,rpm_less,rpm_greater;
-
+bool rpm_flag;
+int n = 14;
+int current_speed{0};
 
 };
 #endif

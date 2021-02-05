@@ -6,41 +6,52 @@ Move::Move()
     servo = new Servo();
     oe = new OpticalEncoder();
     static std_msgs::Int32 rpm;
-    rpm_equal = rpm_less = rpm_greater = false;
+    rpm_flag = false;
 }
 
 void Move::navigation(){
-    rpm_equal = rpm_less = rpm_greater = false;
-    rpm_limit(14);
+//    rpm_equal = rpm_less = rpm_greater = false;
+    rpm_limit();
     motor->move_front(speed);
 }
-void Move::rpm_limit(int n){
+void Move::rpm_limit(){
+    while(speed < safe_speed){
+        if(rpm.data < n){
 
-    while(rpm.data < n && ! rpm_greater && !rpm_equal){
-        delay(1);
-        rpm_less = true;
-        speed ++;
-        if(speed > safe_speed)
-            speed = safe_speed/2;
-        ROS_INFO("RPM: %d < N :%d ---Speed : %d", rpm.data, n, speed);
+            speed ++;
+            ROS_INFO("RPM: %d < N :%d ---Speed : %d", rpm.data, n, speed);
+            motor->move_front(speed);
 
-        break;
-    }
+            }
 
-    while(rpm.data > n && !rpm_less && !rpm_equal){
-        delay(1);
-        speed  -= 1;
-        rpm_greater = true;
-        if (speed < safe_speed/2){
-            rpm_greater = false;
-            rpm_less =true;
-            break;
+        if(rpm.data > n ){
+
+           speed  --;
+            ROS_INFO("RPM: %d > N :%d ---Speed : %d", rpm.data, n, speed);
+            motor->move_front(speed);
+
+            }
+
+
+        if((rpm.data == n || rpm.data == n+2)){
+            delay(5);
+            ROS_INFO("RPM: %d == N :%d ---Speed : %d", rpm.data, n, speed);
+            motor->move_front(speed);
+
         }
-        ROS_INFO("RPM: %d > N :%d ---Speed : %d", rpm.data, n, speed);
-    }
-    while(rpm.data ==n && !rpm_greater && !rpm_less){
-        ROS_INFO("RPM: %d == N :%d ---Speed : %d", rpm.data, n, speed);
-        rpm_equal = true;
         break;
     }
 }
+
+//void Move::desirable_rpm(){
+
+//    while(rpm_flag){
+//        delay(100);
+//        ROS_INFO("RPM: %d == N :%d ---Speed : %d", rpm.data, n, speed);
+//        if(rpm.data > n || rpm.data < n){
+//           break;
+//       }
+//        rpm_flag = false;
+
+//    }
+//}
