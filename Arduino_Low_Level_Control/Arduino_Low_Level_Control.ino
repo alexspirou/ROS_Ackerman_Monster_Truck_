@@ -6,7 +6,7 @@
 #include <Servo.h>
 #include <HardwareSerial.h>
 #include <geometry_msgs/Vector3.h>
-
+#include "TimerOne.h"
 
 
 
@@ -47,8 +47,19 @@ int sp = 0;
 //--Optical Encoder
 
 #define enc_count 374
+//test
 #define enc  2
 
+unsigned int counter1 = 0;
+float des_cm = 2.6;
+unsigned int safety_speed = 50;
+float cm = 0;  
+float diskslots = 20.00;
+void encoder_counter();
+void isr();
+void balance_speed(float rpm, float des_cm);
+
+//tes
 volatile long encoder_value = 0;
 int interval = 1000;
 long previus_millis = 0;
@@ -69,12 +80,12 @@ int u1();
 int u2();
 int u3();
 //--Motors
-void move_for(int &sp);
-void stop_stop(int &sp);
-void move_backwards(int &sp);
+void move_for(int sp);
+void stop_stop(int sp);
+void move_backwards(int sp);
 //--Servo
 void turn_right();
 void turn_left();
 //--OE
 void update_encoder();
-int calculate_rpm();
+void calculate_rpm();

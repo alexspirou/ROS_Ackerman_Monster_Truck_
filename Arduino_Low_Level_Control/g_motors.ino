@@ -1,12 +1,13 @@
-void move_for(int& sp){
-    if (sp > 0){
-    analogWrite(en_a, sp);
+void move_for(int sp){
+    
+   if (sp > 0){
+
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, HIGH);
+    analogWrite(en_a, sp);
     }
 }
-
-void stop_stop(int& sp)
+void stop_stop(int sp)
 {
 //  if (sp == 0)
   //{
@@ -16,10 +17,9 @@ void stop_stop(int& sp)
     {
       analogWrite(en_a, j);
     }
-  //}
-}
 
-void move_backwards(int& sp){
+}
+void move_backwards(int sp){
    
    if (sp < 0)
    {

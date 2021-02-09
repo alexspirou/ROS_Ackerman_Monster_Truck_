@@ -1,48 +1,38 @@
-void update_encoder(){encoder_value ++;}
-
-int calculate_rpm(){
-  current_millis = millis();
-  if (current_millis - previus_millis > interval){
-    previus_millis = current_millis;
-
-    rpm = (int)(encoder_value *60 / enc_count);
-
-//    if(sp > 0 || rpm > 0){
-//     Serial.print("PWM VALUE: ");
-//      Serial.print(i);
-///     Serial.print('\t');
-//      Serial.print(" PULSES: ");
-///     Serial.print(encoder_value);
-//      Serial.print('\t');
-//      Serial.print(" SPEED: ");
-//      Serial.print(rpm);
-//      Serial.println(" RPM");
-//    }
-    
-    encoder_value = 0;
-  }
-  return rpm;
+void encoder_counter(){counter1 ++;}
+void isr(){
+  Timer1.detachInterrupt();  // Stop the timer
+  float rotation1 = (counter1/ diskslots) * 60.00;  // calculate RPM for Motor 1
+  cm = 0.11*2*3.14 *(rotation1)/60; 
+ 
+  Serial.print("RPM ----: ");
+  Serial.println(rotation1);  
+  Serial.print("CM/s ----: ");
+  Serial.println(cm);
+  Serial.print("PWM Pulse ----: ");
+  Serial.println(sp);
+  counter1 = 0;  //  reset counter to zero
+  Timer1.attachInterrupt( isr );  // Enable the timer
+//  rpm_msg.data = cm*100;
+//  optical_encoder_publisher.publish(&rpm_msg);
+  balance_speed(cm, des_cm);
+//function for limit the speed of motor, depend what cm/s is given
+  
 }
-
-//void balance_speed(){
-//   
-//    while (calculate_rpm() < desirable_rpm){
-//    sp ++;
-//    delay(100);
-//    Serial.print("Increasing SPdwedede : ");
-//    Serial.println(sp);
-//    move_for(sp);
-//    Serial.println("Out of increasing loop.");
-//    if(sp >= safety_speed){sp /= 2;}
-//    }
-//    while (calculate_rpm() > desirable_rpm *2){
-//        sp --;
-//        delay(10);
-//        Serial.print("Decreasing SP : ");
-//        Serial.println(sp);
-//        move_for(sp);
-//        Serial.println("Out of increasing loop.");
-//        if(sp >= safety_speed){sp /= 2;}
-//    }
-//    
-//}
+void balance_speed(float current_c, float des_c){
+   if (sp > 0){
+     while (current_c < des_c){
+      sp ++;
+      delay(1);
+      move_for(sp);
+      if(sp >= safety_speed){sp -= 5;}
+      break;
+     }
+   }
+   while (current_c >= des_c){
+        sp --;
+        delay(1);
+        move_for(sp);
+        if(sp >= safety_speed){sp -= 5;}
+        break;
+    }
+}
