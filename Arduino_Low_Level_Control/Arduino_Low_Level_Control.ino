@@ -28,8 +28,8 @@ bool one = true;
 long duration; // variable for the duration of sound wave travel
 int distance; // variable for the distance measurement
 //--U1
-#define u1_echo A3
-#define u1_trig A2
+#define u1_echo A2
+#define u1_trig A3
 //--U2
 #define u2_echo A0
 #define u2_trig A1
@@ -51,21 +51,13 @@ int sp = 0;
 #define enc  2
 
 unsigned int counter1 = 0;
-float des_cm = 2.6;
+float des_cm = 1.5;
 unsigned int safety_speed = 50;
 float cm = 0;  
 float diskslots = 20.00;
 void encoder_counter();
-void isr();
-void balance_speed(float rpm, float des_cm);
-
-//tes
-volatile long encoder_value = 0;
-int interval = 1000;
-long previus_millis = 0;
-long current_millis = 0;
-int rpm = 0;
-
+float encoder_fun();
+void balance_speed(float& rpm, float des_cm, int& pwm_);
 
 //--Function prototyping
 
@@ -80,12 +72,17 @@ int u1();
 int u2();
 int u3();
 //--Motors
-void move_for(int sp);
-void stop_stop(int sp);
+void move_for(int& sp);
+void stop_stop();
 void move_backwards(int sp);
+void check_motors();
 //--Servo
 void turn_right();
 void turn_left();
+void check_servo();
 //--OE
 void update_encoder();
 void calculate_rpm();
+//Navigation
+void auto_navigation(int& sp);
+void manual_navigation();
