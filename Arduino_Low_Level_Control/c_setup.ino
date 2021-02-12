@@ -9,6 +9,7 @@ void setup() {
   pinMode(u3_echo, INPUT); // Sets the echoPin as an INPUT
   //Servo Setup
   myservo.attach(A4);
+  myservo.write(90);
   //Motor Drivers Setup
   pinMode(en_a, OUTPUT);
   pinMode(in_1, OUTPUT);
@@ -20,7 +21,7 @@ void setup() {
   //Motors Check
 //  check_servo();
 //  check_motors();
-
+turn_right();
   //Communication 
   Serial.begin(115200);
   nh->getHardware()->setBaud(115200);
@@ -29,11 +30,11 @@ void setup() {
   nh->initNode();
   //ROS--Publishers-Subscribers
   nh->subscribe(motor);
-  nh->subscribe(servo);
+//  nh->subscribe(servo);
   nh->advertise(optical_encoder_publisher);
   nh->advertise(ultrasonic_sensors_publisher);
 
-  Timer1.initialize(1000000/2); // set timer for 1sec
+  Timer1.initialize(1000000/6); // set timer for 1sec
   attachInterrupt(digitalPinToInterrupt (enc), encoder_counter, RISING);  // Increase counter 1 when speed sensor pin goes High
   Timer1.attachInterrupt( encoder_fun ); // Enable the timer
   

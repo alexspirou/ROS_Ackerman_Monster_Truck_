@@ -43,10 +43,10 @@ int servo_pos{0};
 const int en_a =5;
 const int in_1 = 4;
 const int in_2 =12;
-int sp = 0;
+int sp = 15;
+
 //--Optical Encoder
 
-#define enc_count 374
 //test
 #define enc  2
 
@@ -57,7 +57,7 @@ float cm = 0;
 float diskslots = 20.00;
 void encoder_counter();
 float encoder_fun();
-void balance_speed(float& rpm, float des_cm, int& pwm_);
+void balance_speed(float current_cm, float des_cm, int& pwm_);
 
 //--Function prototyping
 
@@ -74,7 +74,7 @@ int u3();
 //--Motors
 void move_for(int& sp);
 void stop_stop();
-void move_backwards(int sp);
+void move_backwards(int& sp);
 void check_motors();
 //--Servo
 void turn_right();

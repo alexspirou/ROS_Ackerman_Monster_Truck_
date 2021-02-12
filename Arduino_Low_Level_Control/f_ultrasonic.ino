@@ -12,7 +12,7 @@ int u1(){
   // Calculating the distance
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //Displays the distance on the Serial Monitor
-//Serial.print("U1: Distance: ");Serial.print(distance);Serial.println(" cm/n");
+Serial.print("U1: Distance: ");Serial.print(distance);Serial.println(" cm/n");
 
   return distance;
   }
@@ -31,7 +31,7 @@ int u2(){
   // Calculating the distance
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //   Displays the distance on the Serial Monitor
-  //Serial.print("U2: Distance: ");Serial.print(distance);Serial.println(" cm");
+ Serial.print("U2: Distance: ");Serial.print(distance);Serial.println(" cm");
 
   return distance;
   }
@@ -49,7 +49,7 @@ int u3(){
   // Calculating the distance
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //Displays the distance on the Serial Monitor
-//Serial.print("U3 Distance: ");Serial.print(distance);Serial.println(" cm/n");
+Serial.print("U3 Distance: ");Serial.print(distance);Serial.println(" cm/n");
 
   return distance;
   }      

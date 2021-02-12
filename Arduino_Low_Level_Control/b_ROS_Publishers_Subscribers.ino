@@ -7,4 +7,4 @@ ros::Publisher  ultrasonic_sensors_publisher("ultrasonic_sensors", &ultrasonic_s
 //Motor Suscriber
 ros::Subscriber <geometry_msgs::Twist> motor("/cmd_vel", &callback_motors); // Subscribe from topic cmd_vel, twisted messages
 //--Servo Subscriber
-ros::Subscriber <std_msgs::UInt16 > servo("/servo", &callback_servo); // Subscribe from topic cmd_vel, twisted messages
+//ros::Subscriber <std_msgs::UInt16 > servo("/servo", &callback_servo); // Subscribe from topic cmd_vel, twisted messages

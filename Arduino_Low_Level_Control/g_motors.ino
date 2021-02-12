@@ -8,14 +8,12 @@ void move_for(int& sp){
 }
 void stop_stop()
 {
-    digitalWrite(in_1, HIGH);
+    digitalWrite(in_1, LOW);
     digitalWrite(in_2, LOW);
-    for(int j=sp-sp/2; j==0; --j){
-      analogWrite(en_a, j);
-    }
+      analogWrite(en_a, sp);
 
 }
-void move_backwards(int sp){
+void move_backwards(int& sp){
    
    if (sp > 0){
    digitalWrite(in_1, HIGH);
