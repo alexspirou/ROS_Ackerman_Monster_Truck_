@@ -7,8 +7,6 @@ float encoder_fun(){
   counter1 = 0;  //  reset counter to zero
   Timer1.attachInterrupt( encoder_fun );
   // Enable the timer
- turn_right();
- turn_left();
   return cm;
 //rpm_msg.data = cm*100;
 //optical_encoder_publisher.publish(&rpm_msg);
