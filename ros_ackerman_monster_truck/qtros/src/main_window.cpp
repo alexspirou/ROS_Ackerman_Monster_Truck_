@@ -32,7 +32,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 {
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
     QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
-
+    QLabel *label = new QLabel(this);
+    label->setText("first line\nsecond line");
     ReadSettings();
 	setWindowIcon(QIcon(":/images/icon.png"));
 	ui.tab_manager->setCurrentIndex(0); // ensure the first tab is showing - qt-designer should have this already hardwired, but often loses it (settings?).
@@ -160,6 +161,12 @@ void MainWindow::WriteSettings() {
     settings.setValue("remember_settings",QVariant(ui.checkbox_remember_settings->isChecked()));
 
 }
+void qtros::MainWindow::on_pushButton_clicked()
+{
+
+}
+
+
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
@@ -168,4 +175,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 }
 
 }  // namespace qtros
+
+
 

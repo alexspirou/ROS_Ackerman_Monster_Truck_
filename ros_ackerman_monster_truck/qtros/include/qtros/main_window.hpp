@@ -54,9 +54,12 @@ public Q_SLOTS:
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
 
+
+
 private:
 	Ui::MainWindowDesign ui;
 	QNode qnode;
+    void on_pushButton_clicked();
 };
 
 }  // namespace qtros

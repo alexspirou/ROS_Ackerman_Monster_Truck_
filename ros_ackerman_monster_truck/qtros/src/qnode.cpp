@@ -12,14 +12,22 @@
 
 #include <ros/ros.h>
 #include <ros/network.h>
+#include <std_msgs/Int32.h>
+#include <geometry_msgs/Vector3.h>
 #include <string>
 #include <std_msgs/String.h>
 #include <sstream>
 #include "../include/qtros/qnode.hpp"
-
+#include <QLabel>
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
+static geometry_msgs::Vector3 ulrasonic_sensors;
+
+static void oe_callback(const geometry_msgs::Vector3 us_msg){
+//       ROS_INFO("OE: %d",us_msg.data );
+    ulrasonic_sensors = us_msg;
+}
 
 namespace qtros {
 
@@ -49,6 +57,7 @@ bool QNode::init() {
 	ros::NodeHandle n;
 	// Add your ros communications here.
 	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+    pwm_sub  = n.subscribe("ultrasonic_sensors", 25, oe_callback );
 	start();
 	return true;
 }
@@ -64,7 +73,8 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 	ros::start(); // explicitly needed since our nodehandle is going out of scope.
 	ros::NodeHandle n;
 	// Add your ros communications here.
-	chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+    chatter_publisher = n.advertise<std_msgs::String>("chatter", 1000);
+
 	start();
 	return true;
 }
@@ -76,13 +86,12 @@ void QNode::run() {
 
 		std_msgs::String msg;
 		std::stringstream ss;
-		ss << "hello world " << count;
-		msg.data = ss.str();
-		chatter_publisher.publish(msg);
-		log(Info,std::string("I sent: ")+msg.data);
-		ros::spinOnce();
+
+        chatter_publisher.publish(msg);
+        qDebug("Hello Debug %f", ulrasonic_sensors.x);
+        ros::spinOnce();
 		loop_rate.sleep();
-		++count;
+        ++count;
 	}
 	std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
 	Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
