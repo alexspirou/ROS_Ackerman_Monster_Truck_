@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package>
-  <name>qtros</name>
+  <name>Monster_Truck_UI</name>
   <version>0.1.0</version>
   <description>
 
-     qtros
+     Monster_Truck_UI
 
   </description>
   <maintainer email="alex@gmail.com">alex</maintainer>
