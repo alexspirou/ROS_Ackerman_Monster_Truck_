@@ -4,8 +4,9 @@
 #include "mainwindow.h"
 int main(int argc, char **argv) {
     QApplication a(argc, argv);
+    ros::init(argc, argv, "talker");
 
-    MainWindow w(argc,argv);
+    MainWindow w;
     w.show();
     ros::spinOnce();
 

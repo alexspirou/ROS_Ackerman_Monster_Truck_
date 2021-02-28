@@ -4,6 +4,7 @@
 
 cmake_minimum_required(VERSION 2.8.0)
 project(Monster_Truck_UI)
+
 set(CMAKE_AUTOUIC ON)
 ##############################################################################
 # Catkin
@@ -23,22 +24,24 @@ catkin_package()
 
 # this comes from qt_build's qt-ros.cmake which is automatically 
 # included via the dependency call in package.xml
-rosbuild_prepare_qt4(QtCore QtGui) # Add the appropriate components to the component list here
 
 ##############################################################################
 # Sections
 ##############################################################################
 
 
+set(CMAKE_AUTOMOC ON)
 
-QT4_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
-QT4_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})
-QT4_WRAP_CPP(QT_MOC_HPP ${QT_MOC})
-
-##############################################################################
+find_package(Qt5 COMPONENTS Core Gui Widgets)
+QT5_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
+QT5_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})##############################################################################
 # Sources
 ##############################################################################
-
+include_directories(
+    ${Qt5Core_INCLUDE_DIRS}
+    ${Qt5Gui_INCLUDE_DIRS}
+    ${Qt5Widgets_INCLUDE_DIRS}
+    )
 
 set(QT_SOURCES
     src/main.cpp
@@ -57,6 +60,7 @@ set(QT_SOURCES
 ##############################################################################
 
 add_executable(Monster_Truck_UI ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
-target_link_libraries(Monster_Truck_UI ${QT_LIBRARIES} ${catkin_LIBRARIES})
+target_link_libraries(Monster_Truck_UI ${QT_LIBRARIES} ${catkin_LIBRARIES}
+        Qt5::Core     Qt5::Widgets)
 install(TARGETS Monster_Truck_UI RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 

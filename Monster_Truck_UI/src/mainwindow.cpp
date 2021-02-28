@@ -7,12 +7,11 @@
 //ROS MSGS
 #include "std_msgs/String.h"
 
-MainWindow::MainWindow(int argc, char** argv,QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
 
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new MainWindow)
 {
-    ros::init(argc, argv, "talker");
 
     ui->setupUi(this);
     n = new ros::NodeHandle();
@@ -57,3 +56,4 @@ void MainWindow::on_Publisher_Button_clicked()
 
 
 }
+

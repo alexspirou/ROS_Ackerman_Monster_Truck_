@@ -6,23 +6,24 @@
 
 #include "ROS_src/publishers_subscribers/Publishers.h"
 
-namespace Ui {
-class MainWindow;
-}
+
+
 
 class MainWindow : public QMainWindow
 {
-
+ Q_OBJECT
 public:
-    explicit MainWindow(int argc, char** argv,QWidget *parent = nullptr);
-    ~MainWindow();
 
+    explicit MainWindow(QWidget *parent = nullptr);
+    virtual ~MainWindow();
+
+public Q_SLOTS:
+    void on_Publisher_Button_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    MainWindow *ui;
     ros::NodeHandle *n;
     ros::Publisher chatter_pub ;
-    void on_Publisher_Button_clicked();
 
 };
 
