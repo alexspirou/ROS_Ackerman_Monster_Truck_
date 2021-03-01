@@ -1,17 +1,33 @@
-void encoder_counter(){counter1 ++;}
-float encoder_fun(){
-  Timer1.detachInterrupt();  // Stop the timer
-  float rotation1 = (counter1/ diskslots) * 60.00;  // calculate RPM for Motor 1
-  cm = 0.11*2*3.14 *(rotation1)/60; 
-  //Serial.print("RPM ----: ");Serial.println(rotation1); Serial.print("CM/s ----: ");Serial.println(cm);Serial.print("PWM Pulse ----: ");Serial.println(sp);
-  counter1 = 0;  //  reset counter to zero
-  Timer1.attachInterrupt( encoder_fun );
-  // Enable the timer
+void update_encoder(){encoder_value ++;}
+
+float calculate_rpm(){
+  current_millis = millis();
+  if (current_millis - previus_millis > interval){
+    previus_millis = current_millis;
+
+    rpm = (float)(encoder_value *60 / enc_count);
+
+    if(sp >0 || rpm > 0){
+//      Serial.print("PWM VALUE: ");
+//      Serial.print(sp);
+//       Serial.print('\t');
+//      Serial.print(" PULSES: ");
+//      Serial.print(encoder_value);
+//      Serial.print('\t');
+//      Serial.print(" SPEED: ");
+//      Serial.print(rpm);
+//      Serial.println(" RPM");
+//       Serial.print(cm);
+//      Serial.println(" CM/s");
+    }
+      cm = (0.11*2*3.14 *(rpm)/60); 
+    encoder_value = 0;
+  }
+  rpm_msg.data = int(cm);
+  optical_encoder_publisher.publish(&rpm_msg);
   return cm;
-//rpm_msg.data = cm*100;
-//optical_encoder_publisher.publish(&rpm_msg);
-  
 }
+
 void balance_speed(float current_cm, float des_c, int& pwm_){
    if (sp > 0){
      while (current_cm < des_c){

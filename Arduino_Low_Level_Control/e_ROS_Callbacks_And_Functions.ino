@@ -3,7 +3,10 @@ void callback_motors(const geometry_msgs::Twist& cmd_vel)
 {
   sp = cmd_vel.linear.x; 
 }
-
+void callback_qt(const std_msgs::UInt16& qt_msg_f)
+{
+  qt_msg = qt_msg_f.data;
+}
 //void callback_servo  (const std_msgs::UInt16& servo_msg)
 //{
 //  servo_command = servo_msg.data;

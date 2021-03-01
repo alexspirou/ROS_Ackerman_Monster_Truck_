@@ -1,4 +1,5 @@
 #include "ros.h"
+#include <std_msgs/String.h>
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Int32.h>
 #include <std_msgs/UInt16.h>
@@ -16,15 +17,17 @@ ros::NodeHandle* nh = new ros::NodeHandle();
 //--Variables for each message
 ///
 geometry_msgs::Vector3 ultrasonic_sensors; //ultrasonic_sensors.x ->middle
-                                           //ultrasonic_sensors.y ->right
-                                           //ultrasonic_sensors.z ->left
+//ultrasonic_sensors.y ->right
+//ultrasonic_sensors.z ->left
 std_msgs::Int32 rpm_msg;
-
+int  qt_msg = 0;
 int servo_command = 0;
-
+int counter = 0;
 //--Booleans
 bool one = true;
+
 //Ultrasonic Sensors
+
 long duration; // variable for the duration of sound wave travel
 int distance; // variable for the distance measurement
 //--U1
@@ -33,30 +36,37 @@ int distance; // variable for the distance measurement
 //--U2
 #define u2_echo A0
 #define u2_trig A1
-//--U3 
+//--U3
 #define u3_echo 6
 #define u3_trig 7
+
 //--Servo
+
 Servo myservo;  // create servo object to control a servo
-int servo_pos{0};
+int servo_pos = 0;
 //--Motor Driver
-const int en_a =5;
+const int en_a = 5;
 const int in_1 = 4;
-const int in_2 =12;
+const int in_2 = 12;
+//*******************//
 int sp = 15;
+//*******************//
 
 //--Optical Encoder
 
-//test
+#define enc_count 200
 #define enc  2
+volatile long encoder_value = 0;
+int interval = 1000;
+long previus_millis = 0;
+long current_millis = 0;
+int rpm = 0;
+float cm = 0;
 
-unsigned int counter1 = 0;
-float des_cm = 1.5;
+//Speed limiter
+
+float des_cm = 0.25;
 unsigned int safety_speed = 50;
-float cm = 0;  
-float diskslots = 20.00;
-void encoder_counter();
-float encoder_fun();
 void balance_speed(float current_cm, float des_cm, int& pwm_);
 
 //--Function prototyping
@@ -64,6 +74,7 @@ void balance_speed(float current_cm, float des_cm, int& pwm_);
 //--ROS Callbacks and functions
 void callback_motors(const geometry_msgs::Twist& cmd_vel);
 void callback_servo(const std_msgs::UInt16& servo_msg);
+void callback_qt(const std_msgs::UInt16& qt_msg_f);
 void rpm_publisher();
 void ultrasonic_sensors_publisher_call();
 
@@ -71,18 +82,26 @@ void ultrasonic_sensors_publisher_call();
 int u1();
 int u2();
 int u3();
+
 //--Motors
 void move_for(int& sp);
 void stop_stop();
 void move_backwards(int& sp);
 void check_motors();
+
 //--Servo
 void turn_right();
 void turn_left();
 void check_servo();
+
 //--OE
 void update_encoder();
-void calculate_rpm();
-//Navigation
+float calculate_rpm();
+
+//--Navigation
 void auto_navigation(int& sp);
-void manual_navigation();
+
+//--GUI
+void auto_GUI();
+void manual_GUI();
+void stop_GUI();
