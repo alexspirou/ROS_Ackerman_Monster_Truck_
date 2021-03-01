@@ -4,7 +4,7 @@
 #include "mainwindow.h"
 int main(int argc, char **argv) {
     QApplication a(argc, argv);
-    ros::init(argc, argv, "talker");
+    ros::init(argc, argv, "Monster_Truck_UI");
 
     MainWindow w;
     w.show();

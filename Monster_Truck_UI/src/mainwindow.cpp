@@ -5,17 +5,17 @@
 #include "QDebug"
 #include "QProcess"
 //ROS MSGS
-#include "std_msgs/String.h"
 
 MainWindow::MainWindow(QWidget *parent) :
 
     QMainWindow(parent),
-    ui(new MainWindow)
+    ui (new Ui::MainWindow)
 {
 
     ui->setupUi(this);
     n = new ros::NodeHandle();
-    chatter_pub = n->advertise<std_msgs::String>("chatter", 200);
+    pwm_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
+    qt_command = n->advertise<std_msgs::UInt16>("qt", 200);
     qDebug() << "COo";
 }
 
@@ -27,33 +27,42 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Publisher_Button_clicked()
 {
-    QMessageBox::about(this, "Title Here ", "Go Fuck Yourself");
 
-    int count = 0;
-
-      /**
-       * This is a message object. You stuff it with data, and then publish it.
-       */
-      std_msgs::String msg;
-
-      std::stringstream ss;
-      ss << "hello world " << count;
-      msg.data = ss.str();
-
-      ROS_INFO("%s", msg.data.c_str());
-
-      /**
-       * The publish() function is how you send messages. The parameter
-       * is the message object. The type of this object must agree with the type
-       * given as a template parameter to the advertise<>() call, as was done
-       * in the constructor above.
-       */
-      chatter_pub.publish(msg);
+        command.data = 2;
+        qt_command.publish(command);
+}
 
 
+void MainWindow::on_Manual_clicked()
+{
+    command.data = 1;
+    qt_command.publish(command);
 
-      ++count;
+    /*
+     new window here
+     implemantation for manual movement
+     read keyboard inputs
+
+    */
 
 
 }
 
+void MainWindow::on_Stop_clicked()
+{
+    command.data = 0;
+    qt_command.publish(command);
+}
+
+
+void MainWindow::on_Publish_PWM_main_window_clicked()
+{
+
+    pwm_pub.publish(msg);
+}
+
+void MainWindow::on_Set_value_clicked()
+{
+    int pwm_value = ui->PWM_spinBox->text().toInt();
+    msg.linear.x  = pwm_value;
+}
