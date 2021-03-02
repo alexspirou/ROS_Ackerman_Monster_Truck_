@@ -11,33 +11,34 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui (new Ui::MainWindow)
 {
-
+    ros_f.set_pwm(0);
+    ros_f.pwm_publisher();
+    ros_f.qt_command_publisher(0);
     ui->setupUi(this);
-    n = new ros::NodeHandle();
-    pwm_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
-    qt_command = n->advertise<std_msgs::UInt16>("qt", 200);
-    qDebug() << "COo";
+
+    qDebug() << "Constructor OK";
 }
 
 MainWindow::~MainWindow()
 {
+    ros_f.set_pwm(0);
+    ros_f.pwm_publisher();
+    ros_f.qt_command_publisher(0);
     delete ui;
-    delete n;
+    qDebug() << "Destructor OK";
 }
 
 void MainWindow::on_Publisher_Button_clicked()
 {
 
-        command.data = 2;
-        qt_command.publish(command);
+    ros_f.qt_command_publisher(2);
 }
 
 
 void MainWindow::on_Manual_clicked()
 {
-    command.data = 1;
-    qt_command.publish(command);
 
+    ros_f.qt_command_publisher(1);
     /*
      new window here
      implemantation for manual movement
@@ -50,19 +51,32 @@ void MainWindow::on_Manual_clicked()
 
 void MainWindow::on_Stop_clicked()
 {
-    command.data = 0;
-    qt_command.publish(command);
+    ros_f.qt_command_publisher(0);
 }
 
 
 void MainWindow::on_Publish_PWM_main_window_clicked()
 {
-
-    pwm_pub.publish(msg);
+    ros_f.pwm_publisher();
 }
 
 void MainWindow::on_Set_value_clicked()
 {
     int pwm_value = ui->PWM_spinBox->text().toInt();
-    msg.linear.x  = pwm_value;
+    ros_f.set_pwm(pwm_value);
+}
+
+
+void MainWindow::on_start_measurments_clicked()
+{
+
+}
+
+void MainWindow::on_start_measurments_pressed()
+{
+    ros_f.ultrasonic_subscriber();
+    ui->left_ultrasonic_lcd->display(ultrasonic_msg.y);
+    ui->middle_ultrasonic_lcd->display(ultrasonic_msg.x);
+    ui->right_ultrasonic_lcd->display(ultrasonic_msg.z);
+
 }

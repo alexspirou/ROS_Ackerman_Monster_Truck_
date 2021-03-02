@@ -50,8 +50,8 @@ set(QT_SOURCES
     src/mainwindow.ui
     
     #ROS SRC
-	src/ROS_src/publishers_subscribers/Publishers.h
-	src/ROS_src/publishers_subscribers/Subscribers.h	
+	src/ROS_src/_ros.h
+	src/ROS_src/_ros.cpp
 
     )
 

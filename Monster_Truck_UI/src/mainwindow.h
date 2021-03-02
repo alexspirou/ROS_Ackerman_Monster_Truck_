@@ -3,11 +3,8 @@
 
 #include <QMainWindow>
 #include "ros/ros.h"
+#include "../src/ROS_src/_ros.h"
 
-#include "ROS_src/publishers_subscribers/Publishers.h"
-#include "std_msgs/String.h"
-#include "std_msgs/UInt16.h"
-#include "geometry_msgs/Twist.h"
 
 
 namespace Ui {
@@ -21,22 +18,19 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     virtual ~MainWindow();
 
+
 public Q_SLOTS:
     void on_Publisher_Button_clicked();
     void on_Manual_clicked();
     void on_Stop_clicked();
     void on_Publish_PWM_main_window_clicked();
     void on_Set_value_clicked();
-
+    void on_start_measurments_clicked();
+    void on_start_measurments_pressed();
 
 private:
     Ui::MainWindow *ui;
-    ros::NodeHandle *n;
-    ros::Publisher pwm_pub ;
-    ros::Publisher qt_command ;
-    int count = 0;
-    geometry_msgs::Twist msg;
-    std_msgs::UInt16 command;
+    _Ros ros_f;
 
 };
 
