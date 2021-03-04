@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 #include "ros/ros.h"
 #include "../src/ROS_src/_ros.h"
 
@@ -25,12 +26,12 @@ public Q_SLOTS:
     void on_Stop_clicked();
     void on_Publish_PWM_main_window_clicked();
     void on_Set_value_clicked();
-    void on_start_measurments_clicked();
-    void on_start_measurments_pressed();
-
+    void ultrasonic_measurements();
 private:
     Ui::MainWindow *ui;
-    _Ros ros_f;
+    _Ros* ros_f;
+    QTimer* timer;
+
 
 };
 

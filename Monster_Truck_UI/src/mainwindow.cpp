@@ -11,19 +11,24 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui (new Ui::MainWindow)
 {
-    ros_f.set_pwm(0);
-    ros_f.pwm_publisher();
-    ros_f.qt_command_publisher(0);
     ui->setupUi(this);
+    this->setWindowTitle("Monster Truck Ui ");
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this,SLOT(ultrasonic_measurements()));
+    timer->start(500);
 
+    //ROS
+    ros_f = new _Ros();
+    ros_f->ultrasonic_subscriber();
     qDebug() << "Constructor OK";
+
 }
 
 MainWindow::~MainWindow()
 {
-    ros_f.set_pwm(0);
-    ros_f.pwm_publisher();
-    ros_f.qt_command_publisher(0);
+    ros_f->set_pwm(0);
+    ros_f->pwm_publisher();
+    ros_f->qt_command_publisher(0);
     delete ui;
     qDebug() << "Destructor OK";
 }
@@ -31,14 +36,14 @@ MainWindow::~MainWindow()
 void MainWindow::on_Publisher_Button_clicked()
 {
 
-    ros_f.qt_command_publisher(2);
+    ros_f->qt_command_publisher(2);
 }
 
 
 void MainWindow::on_Manual_clicked()
 {
 
-    ros_f.qt_command_publisher(1);
+    ros_f->qt_command_publisher(1);
     /*
      new window here
      implemantation for manual movement
@@ -51,32 +56,27 @@ void MainWindow::on_Manual_clicked()
 
 void MainWindow::on_Stop_clicked()
 {
-    ros_f.qt_command_publisher(0);
+    ros_f->qt_command_publisher(0);
 }
 
 
 void MainWindow::on_Publish_PWM_main_window_clicked()
 {
-    ros_f.pwm_publisher();
+    ros_f->pwm_publisher();
 }
 
 void MainWindow::on_Set_value_clicked()
 {
     int pwm_value = ui->PWM_spinBox->text().toInt();
-    ros_f.set_pwm(pwm_value);
+    ros_f->set_pwm(pwm_value);
 }
 
 
-void MainWindow::on_start_measurments_clicked()
-{
 
-}
-
-void MainWindow::on_start_measurments_pressed()
+void MainWindow::ultrasonic_measurements()
 {
-    ros_f.ultrasonic_subscriber();
-    ui->left_ultrasonic_lcd->display(ultrasonic_msg.y);
-    ui->middle_ultrasonic_lcd->display(ultrasonic_msg.x);
+    ui->left_ultrasonic_lcd->display(ultrasonic_msg.y );
+    ui->middle_ultrasonic_lcd->display(ultrasonic_msg.x );
     ui->right_ultrasonic_lcd->display(ultrasonic_msg.z);
-
+    ros_f->ultrasonic_subscriber();
 }

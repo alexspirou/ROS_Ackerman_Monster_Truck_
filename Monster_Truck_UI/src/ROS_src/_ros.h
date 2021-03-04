@@ -7,13 +7,8 @@
 #include "geometry_msgs/Twist.h"
 #include "geometry_msgs/Vector3.h"
 #include "QDebug"
-
 static geometry_msgs::Vector3 ultrasonic_msg;
-static void ultrasonic_callback(const geometry_msgs::Vector3 us_msg){
 
-    ultrasonic_msg = us_msg;
-    ultrasonic_msg.x = 10;
-}
 class _Ros
 {
 public:
@@ -28,21 +23,24 @@ public:
     void qt_command_publisher(unsigned f_command);
 
     //ultrasonic_sensors topic
+    static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
+
+
+        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
+
+        ultrasonic_msg = *us_msg;
+        //qDebug() << us_msg->x << us_msg->y << us_msg->z;
+    }
     void ultrasonic_subscriber()
     {
-        ultrasonic_sub = n->subscribe("ultrasonic_sensors",25,ultrasonic_callback);
+        ros::Rate loop_rate(5);
+        ultrasonic_sub = n->subscribe("ultrasonic_sensors",100,ultrasonic_callback);
+        loop_rate.sleep();
         ros::spinOnce();
-        qDebug() << ultrasonic_msg.x  << ultrasonic_msg.y << ultrasonic_msg.z;
-        qDebug() << 2;
-
-
 
     }
 
-    //optical_encoder topic
     void speed_subscriber();
-
-
 private:
 
     ros::NodeHandle *n;
@@ -54,6 +52,9 @@ private:
     std_msgs::UInt16 command;
     //ultrasonic_sensors topic
     ros::Subscriber ultrasonic_sub;
+    int x = 0;
+
+
 
 };
 

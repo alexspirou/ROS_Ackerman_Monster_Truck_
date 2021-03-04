@@ -1,22 +1,26 @@
 #include "_ros.h"
 #include "std_msgs/UInt16.h"
 
+
 _Ros::_Ros()
 {
     n = new ros::NodeHandle();
     pwm_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
     qt_command = n->advertise<std_msgs::UInt16>("qt", 200);
-    static geometry_msgs::Vector3 ultrasonic_msg;
+    qt_command_publisher(0);
+    set_pwm(0);
+    pwm_publisher();
+
 
 }
 _Ros::~_Ros()
 {
-    for (int i = 0; i<50; i++){
-        qt_command_publisher(0);
-        set_pwm(0);
-        pwm_publisher();
-        ros::Duration(0.1).sleep();
-    }
+    set_pwm(0);
+    qt_command_publisher(0);
+
+    pwm_publisher();
+    ros::Duration(0.1).sleep();
+     ros::spinOnce();
     delete n;
 }
 void _Ros::pwm_publisher()

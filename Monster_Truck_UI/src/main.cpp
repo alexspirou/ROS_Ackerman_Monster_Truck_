@@ -9,8 +9,9 @@ int main(int argc, char **argv) {
 
     MainWindow w;
     w.show();
-    ros::spinOnce();
+
     qDebug() << "main";
+
     return a.exec();
 
 }
