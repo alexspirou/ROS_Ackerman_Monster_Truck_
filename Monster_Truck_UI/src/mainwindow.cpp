@@ -4,6 +4,8 @@
 #include "QMessageBox"
 #include "QDebug"
 #include "QProcess"
+#include "Events/keyboard_events.h"
+
 //ROS MSGS
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(ultrasonic_measurements()));
     timer->start(500);
-
+    manual_window = new Manual_Window();
     //ROS
     ros_f = new _Ros();
     ros_f->ultrasonic_subscriber();
@@ -44,6 +46,10 @@ void MainWindow::on_Manual_clicked()
 {
 
     ros_f->qt_command_publisher(1);
+
+    manual_window->show();
+
+    manual_window->exec();
     /*
      new window here
      implemantation for manual movement
@@ -80,3 +86,4 @@ void MainWindow::ultrasonic_measurements()
     ui->right_ultrasonic_lcd->display(ultrasonic_msg.z);
     ros_f->ultrasonic_subscriber();
 }
+

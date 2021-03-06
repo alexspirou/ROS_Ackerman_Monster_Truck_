@@ -48,7 +48,11 @@ set(QT_SOURCES
     src/mainwindow.cpp
     src/mainwindow.h
     src/mainwindow.ui
-    
+    src/Events/keyboard_events.h
+	
+	src/Manual_Window/manual_window.cpp
+	src/Manual_Window/manual_window.h
+	src/Manual_Window/manual_window.ui
     #ROS SRC
 	src/ROS_src/_ros.h
 	src/ROS_src/_ros.cpp
