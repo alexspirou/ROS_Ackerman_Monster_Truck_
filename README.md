@@ -4,16 +4,15 @@ ROS_Ackerman_Monster_Truck is a robot car with an arduino and Raspberry Pi 4. Ar
 and control robot with a GUI.
 
 ## ROS_Ackerman_Monster_Truck_UI
-
 ROS_Ackerman_Monster_Truck_UI is a GUI programmed with Qt framework. Is a usefull GUI for any ROS project that allows to you to control your Robot and reading data from sensors.
-
+![](/Resources/ui.png)
 ## Installation
 
-```bash
 # Create a workspace folder
+```bash
 mkdir -p <catkin_ws>/src
 cd <catkin_ws>/src
-
+```
 # Clone the repo
 ```bash
 https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
