@@ -25,7 +25,7 @@ git clone https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```
 # Build project
 ```bash
-cd catkin_ws2
+cd ..
 catkin_make
 ```
 # Control Turtlesim
