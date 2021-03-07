@@ -19,7 +19,7 @@ cd <catkin_ws>/src
 ```
 # Clone the repo
 ```bash
-https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
+git clone https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```
 # Build project
 ```bash
