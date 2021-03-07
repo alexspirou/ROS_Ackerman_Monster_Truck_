@@ -42,7 +42,7 @@ pwm_pub = n->advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 200);
 ```
 and build:
 ```bash
-cd catkin_ws2
+cd ..
 catkin_make
 ``````
 ## Run
