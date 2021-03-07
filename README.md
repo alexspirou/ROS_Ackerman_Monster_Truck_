@@ -49,7 +49,7 @@ roscore
 ```
 Run GUI
 ```bash
-rosrun ROS_Ackerman_Monster_Truck_UI ROS_Ackerman_Monster_Truck_UI 
+rosrun Monster_Truck_UI Monster_Truck_UI 
 ```
 Start turtlesim_node:
 
