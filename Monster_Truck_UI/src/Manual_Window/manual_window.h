@@ -7,6 +7,8 @@
 #include <QTimer>
 #include <QEvent>
 #include <QKeyEvent>
+#include "../ROS_src/_ros.h"
+
 namespace Ui {
 class Manual_Window;
 }
@@ -17,7 +19,7 @@ class Manual_Window : public QDialog
 
 public:
     explicit Manual_Window(QWidget *parent = nullptr);
-    ~Manual_Window();
+    virtual ~Manual_Window() override;
 
 
 public Q_SLOTS:
@@ -25,30 +27,30 @@ public Q_SLOTS:
     void keyboard_events();
 
 private:
-
+    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void keyReleaseEvent(QKeyEvent *event) override;
     Ui::Manual_Window *ui;
     Keyboard_Events* key;
     QTimer* timer;
     QEvent* event;
-    void key_press(QKeyEvent* event);
-
-
-
+    _Ros* ros_f;
 
 
 
 
     const char* info_message = "Keyboard Teleoparation Info\n\n"
 
-            "-Move Forward : Up Arrow\n\n"
+            "-Move Forward : Num 8\n\n"
 
-            "-Move Backward: Down Arrow\n\n"
+            "-Move Backward: Num 2\n\n"
 
-            "-Turn Left :  Left Arrow\n\n"
+            "-Turn Left :  Num 4\n\n"
 
-            "-Turn Rigth : Right Arrow\n\n"
+            "-Turn Rigth : Num 6\n\n"
 
-            "-Stop : Space ";
+            "-Stop : Z \n\n"
+            "****************************************************\n"
+            "For better control press num lock and use the numpad ";
 };
 
 #endif // MANUAL_WINDOW_H

@@ -5,8 +5,8 @@
 class Keyboard_Events
 {
 public:
-    void key_press(QKeyEvent* event){
-        if(event->key() == Qt::Key_Space){
+    void move_front(QKeyEvent* event){
+        if(event->key() == Qt::Key_Up){
            qDebug() << "q is pressed ";
          }
     }

@@ -5,7 +5,7 @@
 _Ros::_Ros()
 {
     n = new ros::NodeHandle();
-    pwm_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
+    pwm_pub = n->advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 200);
     qt_command = n->advertise<std_msgs::UInt16>("qt", 200);
     qt_command_publisher(0);
     set_pwm(0);

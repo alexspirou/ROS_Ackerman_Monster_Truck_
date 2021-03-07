@@ -18,7 +18,7 @@ public:
     //cmd_vel topic
     void pwm_publisher();
     void set_pwm(int pwm_f) {pwm_msg.linear.x = pwm_f;}
-
+    void set_pwm_z(int pwm_f) {pwm_msg.angular.z = pwm_f;}
     //qt_command topic
     void qt_command_publisher(unsigned f_command);
 
