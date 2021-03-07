@@ -13,8 +13,8 @@ ROS_Ackerman_Monster_Truck_UI is a Graphical User Interface programmed with Qt f
 
 # Create a workspace folder
 ```bash
-mkdir -p <catkin_ws>/src
-cd <catkin_ws>/src
+mkdir -p <catkin_ws2>/src
+cd <catkin_ws2>/src
 ```
 # Clone the repo
 ```bash
@@ -22,7 +22,7 @@ git clone https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```
 # Build project
 ```bash
-cd catkin_ws
+cd catkin_ws2
 catkin_make
 ```
 # Control Turtlesim
