@@ -25,7 +25,23 @@ https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```bash
 cd catkin_ws
 catkin_make
+
+To control the turtlesim you need to change the rostopic to turtlesim's cmd_vel topic.
+Go to source folder in ROS_Ackerman_Monster_Truck_/Monster_Truck_UI/src/ROS_src/_ros.cpp file change the line of code
+
+from :
+```bash
+pwm_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
 ```
+to :
+```bash
+pwm_pub = n->advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 200);
+```
+and build:
+```bash
+cd catkin_ws
+catkin_make
+``````
 ## Run
 Start a rosmaster:
 ```bash
@@ -41,20 +57,5 @@ Start turtlesim_node to check it:
 rosrun turtlesim turtlesim_node
 ```
 
-If turtlesim doesn't move go to source folder in ROS_Ackerman_Monster_Truck_/Monster_Truck_UI/src/ROS_src/_ros.cpp file change the line of code
-
-from :
-```bash
-pwm_pub = n->advertise<geometry_msgs::Twist>("", 200);
-```
-to :
-```bash
-pwm_pub = n->advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 200);
-```
-and build:
-```bash
-cd catkin_ws
-catkin_make
-```
 
 
