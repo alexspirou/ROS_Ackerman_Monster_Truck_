@@ -25,7 +25,8 @@ https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```bash
 cd catkin_ws
 catkin_make
-
+```
+# Control Turtlesim
 To control the turtlesim you need to change the rostopic to turtlesim's cmd_vel topic.
 Go to source folder in ROS_Ackerman_Monster_Truck_/Monster_Truck_UI/src/ROS_src/_ros.cpp file change the line of code
 
@@ -51,7 +52,7 @@ Run GUI
 ```bash
 rosrun ROS_Ackerman_Monster_Truck_UI ROS_Ackerman_Monster_Truck_UI 
 ```
-Start turtlesim_node to check it:
+Start turtlesim_node:
 
 ```bash
 rosrun turtlesim turtlesim_node
