@@ -3,7 +3,7 @@
 ROS_Ackerman_Monster_Truck is a robot car with an arduino and a Raspberry Pi 4. Arduino is responssible for the control of motors and sensors. Raspberry Pi runs Robot Operating System (ROS) and controls robot with a GUI.
 
 ## ROS_Ackerman_Monster_Truck_UI
-ROS_Ackerman_Monster_Truck_UI is a Graphical User Interface programmed with Qt framework. Is a useful GUI for any ROS project that allows you to control your Robot and reading data from sensors.
+ROS_Ackerman_Monster_Truck_UI is a Graphical User Interface programmed with Qt framework. It's a useful GUI for any ROS project that allows you to control your Robot and reading data from sensors.
 
 
 ![](/Resources/ui.png)
