@@ -13,8 +13,8 @@ int u1(){
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //Displays the distance on the Serial Monitor
 //Serial.print("U1: Distance: ");Serial.print(distance);Serial.println(" cm/n");
-  ultrasonic_sensors.x = distance;
-  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
+//  ultrasonic_sensors.x = distance;
+//  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
   return distance;
   }
 int u2(){
@@ -33,8 +33,8 @@ int u2(){
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //   Displays the distance on the Serial Monitor
 // Serial.print("U2: Distance: ");Serial.print(distance);Serial.println(" cm");
-  ultrasonic_sensors.y = distance;
-  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
+//  ultrasonic_sensors.y = distance;
+//  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
   return distance;
   }
 int u3(){
@@ -52,7 +52,7 @@ int u3(){
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 //Displays the distance on the Serial Monitor
 //Serial.print("U3 Distance: ");Serial.print(distance);Serial.println(" cm/n");
-  ultrasonic_sensors.z = distance;
-  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
+//  ultrasonic_sensors.z = distance;
+//  ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
   return distance;
   }      

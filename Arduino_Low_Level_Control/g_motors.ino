@@ -1,11 +1,12 @@
-void move_for(int& sp){
+void move_for(int sp){
     
-   if (sp > 0){
+
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, HIGH);
     analogWrite(en_a, sp);
-    calculate_rpm();
-    }
+   
+    
+
 }
 void stop_stop()
 {
@@ -13,17 +14,18 @@ void stop_stop()
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, LOW);
     analogWrite(en_a, sp);
-    calculate_rpm();
+    
+    
 
 }
-void move_backwards(int& sp){
+void move_backwards(int sp){
    
  
    digitalWrite(in_1, HIGH);
    digitalWrite(in_2, LOW);
    analogWrite(en_a, abs(sp));
-   calculate_rpm();
-  
+   rpm_publisher();
+   
 
 }
 void check_motors(){

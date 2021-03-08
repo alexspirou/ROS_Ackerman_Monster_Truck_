@@ -7,16 +7,16 @@ void callback_qt(const std_msgs::UInt16& qt_msg_f)
 {
   qt_msg = qt_msg_f.data;
 }
-//void callback_servo  (const std_msgs::UInt16& servo_msg)
-//{
-//  servo_command = servo_msg.data;
-//}
+void callback_servo  (const std_msgs::UInt16& servo_msg)
+{
+  servo_command = servo_msg.data;
+}
 //--Publisher for rpm
-//void rpm_publisher()
-//{
-//  rpm_msg.data = calculate_rpm();
-//  optical_encoder_publisher.publish(&rpm_msg);
-//}
+void rpm_publisher()
+{
+  rpm_msg.data = int (calculate_rpm());
+  optical_encoder_publisher.publish(&rpm_msg);
+}
 
 //--Publisher for U1
 void ultrasonic_sensors_publisher_call()

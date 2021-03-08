@@ -31,7 +31,7 @@ void setup() {
   //ROS--Publishers-Subscribers
   nh->subscribe(motor);
   nh->subscribe(qt_sub);
-//  nh->subscribe(servo);
+  nh->subscribe(servo);
   nh->advertise(optical_encoder_publisher);
   nh->advertise(ultrasonic_sensors_publisher);
 

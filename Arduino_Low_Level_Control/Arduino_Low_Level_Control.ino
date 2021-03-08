@@ -49,7 +49,7 @@ const int en_a = 5;
 const int in_1 = 4;
 const int in_2 = 12;
 //*******************//
-int sp = 15;
+int sp = 0;
 //*******************//
 
 //--Optical Encoder
@@ -65,7 +65,7 @@ float cm = 0;
 
 //Speed limiter
 
-float des_cm = 0.25;
+float des_cm = 0.15;
 unsigned int safety_speed = 50;
 void balance_speed(float current_cm, float des_cm, int& pwm_);
 
@@ -84,14 +84,16 @@ int u2();
 int u3();
 
 //--Motors
-void move_for(int& sp);
+void move_for(int sp);
 void stop_stop();
-void move_backwards(int& sp);
+void move_backwards(int sp);
 void check_motors();
 
 //--Servo
 void turn_right();
 void turn_left();
+void manual_turn_right();
+void manual_turn_left();
 void check_servo();
 
 //--OE
