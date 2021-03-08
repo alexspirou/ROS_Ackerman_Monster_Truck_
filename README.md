@@ -10,7 +10,20 @@ ROS_Ackerman_Monster_Truck_UI is a Graphical User Interface programmed with Qt f
 
 
 ## Installation
+First you need to install Qt ROS plugin. 
+From:
+https://ros-qtc-plugin.readthedocs.io/en/latest/_source/How-to-Install-Users.html
 
+Go to:
+Installation Procedure for Ubuntu 18.04
+Download Installer:
+    --->Bionic Online Installer (Recommended)
+When the file is downloaded it needs to allow it as executable.
+-Rigt click
+-Properties
+-Permissions
+-Allow executing file as program
+-Double click and install Qt 
 # Create a workspace folder
 ```bash
 mkdir catkin_ws2
