@@ -44,7 +44,7 @@ git clone https://github.com/alexspirou/ROS_Ackerman_Monster_Truck_.git
 ```
 # Build project
 ```bash
-cd ..
+cd <path-to-catkin_ws>
 catkin_make
 ```
 # Control Turtlesim
@@ -61,6 +61,7 @@ pwm_pub = n->advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 200);
 ```
 and build:
 ```bash
+cd <path-to-catkin_ws>
 catkin_make
 ``````
 ## Run
