@@ -21,12 +21,16 @@ public:
     void set_pwm_z(int pwm_f) {pwm_msg.angular.z = pwm_f;}
     //qt_command topic
     void qt_command_publisher(unsigned f_command);
+    //Servo topic
+    void servo_command_publisher(unsigned f_servo_command);
+    void set_servo_command(int servo_command_f);
+
 
     //ultrasonic_sensors topic
     static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
 
 
-        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
+//        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
 
         ultrasonic_msg = *us_msg;
         //qDebug() << us_msg->x << us_msg->y << us_msg->z;
@@ -49,7 +53,10 @@ private:
     geometry_msgs::Twist pwm_msg;
     //Qt topic
     ros::Publisher qt_command ;
-    std_msgs::UInt16 command;
+    std_msgs::UInt16 qt_comm;
+    //Servo topic
+    ros::Publisher servo_command ;
+    std_msgs::UInt16 servo_comm;
     //ultrasonic_sensors topic
     ros::Subscriber ultrasonic_sub;
     int x = 0;
