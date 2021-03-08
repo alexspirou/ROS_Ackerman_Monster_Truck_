@@ -70,6 +70,10 @@ roscore
 ```
 Run GUI
 ```bash
+cd <path-to-catkin_ws>
+source devel/setup.bash
+```
+```bash
 rosrun Monster_Truck_UI Monster_Truck_UI 
 ```
 Start turtlesim_node:
