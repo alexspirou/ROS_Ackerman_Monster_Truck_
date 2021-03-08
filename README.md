@@ -18,12 +18,12 @@ Go to:
 Installation Procedure for Ubuntu 18.04
 Download Installer:
     --->Bionic Online Installer (Recommended)
-When the file is downloaded it needs to allow it as executable.
--Rigt click
--Properties
--Permissions
--Allow executing file as program
--Double click and install Qt 
+When the download completes it needs to allowed as executable.
+ -Rigt click
+ -Properties
+ -Permissions
+ -Allow executing file as program
+ -Double click and install Qt 
 # Create a workspace folder
 ```bash
 mkdir catkin_ws2
