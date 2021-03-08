@@ -24,6 +24,12 @@ When the download completes it needs to allowed as executable.
  -Permissions
  -Allow executing file as program
  -Double click and install Qt 
+ 
+After install Qt for ROS it needs to install qt build.
+```bash
+sudo apt-get install ros-melodic-qt-build
+```
+
 # Create a workspace folder
 ```bash
 mkdir catkin_ws2
