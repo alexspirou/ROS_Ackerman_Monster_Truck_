@@ -1,0 +1,240 @@
+<?xml version="1.0" ?>
+
+<robot name="Monster_Truck" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <link name="base_link">
+        <visual>
+            <material name="Blue">
+                <color rgba="0 0 1 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0 0 0.3"/>
+            <geometry>
+                <box size="2 0.5 0.3"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="front" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="front"/>
+    </joint>    
+    <link name="front">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="-1 0 0.4"/>
+            <geometry>
+                <box size="0.1 0.1 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+    <!--Links for connect wheels and base link--> 
+
+    <joint name="fixed_back_left" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="connect_left_back_wheel"/>
+    </joint>
+
+    <link name="connect_left_back_wheel">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0.5 -0.1 0.1"/>
+            <geometry>
+                <box size="0.2 0.15 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="fixed_front_left" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="connect_left_front_wheel"/>
+    </joint>
+
+    <link name="connect_left_front_wheel">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="-0.5 -0.1 0.1"/>
+            <geometry>
+                <box size="0.2 0.15 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!--Links for connect wheels and base link--> 
+
+    <joint name="fixed_back_right" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="connect_right_back_wheel"/>
+    </joint>
+
+    <link name="connect_right_back_wheel">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0.5 0.1 0.1"/>
+            <geometry>
+                <box size="0.2 0.15 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+    <joint name="fixed_front_right" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="connect_right_front_wheel"/>
+    </joint>
+
+    <link name="connect_right_front_wheel">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="-0.5 0.1 0.08"/>
+            <geometry>
+                <box size="0.2 0.15 0.31"/>
+            </geometry>
+        </visual>
+    </link>
+
+
+    <joint name="fixed_front_right_2" type="fixed">
+        <axis xyz="0 0 1" />
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="connect_right_front_wheel"/>
+        <child link="connect_right_front_wheel_2"/>
+    </joint>
+
+    <link name="connect_right_front_wheel_2">
+        <visual>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="-0.5 0.3 0"/>
+            <geometry>
+                <box size="0.2 0.3 0.15"/>
+            </geometry>
+        </visual>
+    </link>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Joint for right back wheel-->  
+    <joint name="base_link_right_back_wheel" type="continuous">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        <parent link="connect_right_front_wheel_2"/>
+        <child link="right_wheel_back"/>
+    </joint>
+    
+    <!--right back wheel-->  
+    <link name="right_wheel_back">
+    <visual>
+   	<material name="Black">
+      <color rgba="0 0 1 1"/>
+    </material>    	
+      <origin xyz="-0.5 0.6 0" rpy="1.570795 0 0" />
+      <geometry>
+          <cylinder length="0.5" radius="0.3" />
+      </geometry>
+    </visual>
+    </link>
+
+      <!--Joint for left back wheel-->  
+    <joint name="base_link_left_back_wheel" type="continuous">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" lower="-3.14" upper="3.14" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        <parent link="base_link"/>
+        <child link="left_wheel_back"/>
+    </joint>
+
+    <!--left back wheel-->     
+    <link name="left_wheel_back">
+    <visual>
+   	<material name="Black">
+      <color rgba="0 0 0 1"/>
+    </material>    	
+      <origin xyz="-0.5 -0.6 0" rpy="1.570795 0 0" />
+      <geometry>
+          <cylinder length="0.3" radius="0.3" />
+      </geometry>
+    </visual>
+    </link>
+    <!--Joint for right front wheel-->  
+    <joint name="base_link_right_front_wheel" type="continuous">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-3.14" upper="3.14" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        <parent link="base_link"/>
+        <child link="right_wheel_front"/>
+    </joint>
+    
+    <!--right front  wheel-->  
+    <link name="right_wheel_front">
+    <visual>
+   	<material name="Black">
+      <color rgba="0 0 0 1"/>
+    </material>    	
+      <origin xyz="0.5 0.6 0" rpy="1.570795 0 0" />
+      <geometry>
+          <cylinder length="0.3" radius="0.3" />
+      </geometry>
+    </visual>
+    </link>
+
+      <!--Joint for left front wheel-->  
+    <joint name="base_link_left_front_wheel" type="continuous">
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="0.5" />
+        <joint_properties damping="0.0" friction="0.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        <parent link="base_link"/>
+        <child link="left_wheel_front"/>
+    </joint>
+
+    <!--left front wheel-->     
+    <link name="left_wheel_front">
+    <visual>
+   	<material name="Black">
+      <color rgba="0 0 0 1"/>
+    </material>    	
+      <origin xyz="0.5 -0.6 0" rpy="1.570795 0 0" />
+      <geometry>
+          <cylinder length="0.3" radius="0.3" />
+      </geometry>
+    </visual>
+    </link>
+</robot>
