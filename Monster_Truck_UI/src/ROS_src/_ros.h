@@ -6,6 +6,7 @@
 #include "std_msgs/UInt16.h"
 #include "geometry_msgs/Twist.h"
 #include "geometry_msgs/Vector3.h"
+#include "sensor_msgs/JointState.h"
 #include "QDebug"
 static geometry_msgs::Vector3 ultrasonic_msg;
 
@@ -24,7 +25,8 @@ public:
     //Servo topic
     void servo_command_publisher(unsigned f_servo_command);
     void set_servo_command(int servo_command_f);
-
+    //rviz
+    void left_wheel_front_publisher();
 
     //ultrasonic_sensors topic
     static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
@@ -59,6 +61,9 @@ private:
     std_msgs::UInt16 servo_comm;
     //ultrasonic_sensors topic
     ros::Subscriber ultrasonic_sub;
+    //rviz
+    ros::Publisher rviz_publisher;
+    sensor_msgs::JointState left_wheel_front;
     int x = 0;
 
 
