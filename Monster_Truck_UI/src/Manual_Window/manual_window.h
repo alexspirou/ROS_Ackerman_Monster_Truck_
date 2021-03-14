@@ -34,7 +34,7 @@ private:
     QTimer* timer;
     QEvent* event;
     _Ros* ros_f;
-
+    int x = 0;
 
 
 

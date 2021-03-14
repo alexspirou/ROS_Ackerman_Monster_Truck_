@@ -6,8 +6,12 @@
 #include "std_msgs/UInt16.h"
 #include "geometry_msgs/Twist.h"
 #include "geometry_msgs/Vector3.h"
-#include "sensor_msgs/JointState.h"
+#include "tf2_msgs/TFMessage.h"
 #include "QDebug"
+#include "geometry_msgs/Transform.h"
+#include "sensor_msgs/JointState.h"
+#include "std_msgs/Header.h"
+
 static geometry_msgs::Vector3 ultrasonic_msg;
 
 class _Ros
@@ -27,7 +31,8 @@ public:
     void set_servo_command(int servo_command_f);
     //rviz
     void left_wheel_front_publisher();
-
+    void set_x(int& x_f){x = x_f;}
+    void turn_right();
     //ultrasonic_sensors topic
     static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
 
@@ -63,9 +68,12 @@ private:
     ros::Subscriber ultrasonic_sub;
     //rviz
     ros::Publisher rviz_publisher;
-    sensor_msgs::JointState left_wheel_front;
-    int x = 0;
-
+    tf2_msgs::TFMessage* left_wheel_front;
+    sensor_msgs::JointState left_wheel_joint;
+    ros::Time begin;
+    geometry_msgs::Transform  transform;
+    std_msgs::Header header;
+    double x = 0;
 
 
 };

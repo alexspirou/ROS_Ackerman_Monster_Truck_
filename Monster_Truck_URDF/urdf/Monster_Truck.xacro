@@ -85,13 +85,13 @@
     </link>
 <!--****************************************-->
 <!--****************************************-->   
-  <joint name="joint_left_wheel_f" type="continuous">
+  <joint name="joint_left_wheel_f" type="revolute">
     <parent link="link_left_f_2"/>
     <child link="left_wheel_f"/>
     <origin xyz="-0.20 0.30 0" rpy="0 0 0" /> 
     <axis xyz="0 1 0" />
-    <limit effort="100" velocity="100"/>
-    <joint_properties damping="0.0" friction="0.0"/>
+  <dynamics damping="0.7"/>
+  <limit effort="1000" velocity="0.5" lower="-3.14" upper="3.14" />
   </joint>
 <!--****************************************-->
 <!--****************************************-->   

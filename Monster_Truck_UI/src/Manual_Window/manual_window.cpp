@@ -39,6 +39,8 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             ros_f->set_pwm(60);
             ros_f->pwm_publisher();
             ros_f->left_wheel_front_publisher();
+
+            ros::spinOnce();
             ui->forward_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_2:
