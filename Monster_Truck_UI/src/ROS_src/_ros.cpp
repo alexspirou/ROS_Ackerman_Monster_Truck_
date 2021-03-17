@@ -11,21 +11,9 @@ _Ros::_Ros()
     qt_command_publisher(0);
     set_pwm(0);
     pwm_publisher();
-//    left_wheel_front = new tf2_msgs::TFMessage();
-//    left_wheel_joint.name.push_back("joint_left_wheel_f");
-//    left_wheel_joint.position.push_back(1);
-//    left_wheel_joint.velocity.push_back(20);
-    rviz_publisher = n->advertise<tf2_msgs::TFMessage>("/tf", 200);
-    transform.rotation.w = 1;
-    transform.translation.y = 0.3;
-    transform.translation.z = 0.0;
-    transform.rotation.z = 1.0;
-    header.stamp.now();
-    header.frame_id = "link_left_f_2";
-    left_wheel_front->transforms.emplace_back(transform);
+
     
     
-    begin = ros::Time::now();
 }
 _Ros::~_Ros()
 {
@@ -34,7 +22,7 @@ _Ros::~_Ros()
 
     pwm_publisher();
     ros::Duration(0.1).sleep();
-     ros::spinOnce();
+    ros::spinOnce();
     delete n;
 }
 void _Ros::pwm_publisher()
@@ -58,23 +46,4 @@ void _Ros::speed_subscriber()
 {
 
 }
-void _Ros::left_wheel_front_publisher(){
 
-//    left_wheel_front->transforms.at(0).header.stamp.now();
-//    left_wheel_front->transforms.at(0).transform.rotation.w = 2;
-   rviz_publisher.publish(*left_wheel_front);
-
-
-//    left_wheel_joint.header.stamp.sec = begin.toSec() + 100;
-//    x += -0.2;
-
-//    left_wheel_joint.position.at(0) = x;
-//    left_wheel_joint.velocity.at(0)= 10;
-//    rviz_publisher.publish(left_wheel_joint);
-
-
-}
-void _Ros::turn_right(){
-
-
-}

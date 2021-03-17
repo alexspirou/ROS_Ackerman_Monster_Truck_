@@ -57,7 +57,8 @@ set(QT_SOURCES
     #ROS SRC
 	src/ROS_src/_ros.h
 	src/ROS_src/_ros.cpp
-
+        src/ROS_src/rviz.h
+        src/ROS_src/rviz.cpp
     )
 
 ##############################################################################

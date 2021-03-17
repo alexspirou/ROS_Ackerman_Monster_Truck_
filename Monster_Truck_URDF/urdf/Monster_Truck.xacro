@@ -3,12 +3,12 @@
 <robot name="Monster_Truck" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <link name="base_link">
         <visual>
-            <material name="Blue">
-                <color rgba="0 0 1 1"/>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
             </material>
             <origin rpy="0 0 0" xyz="0 0 0.2"/>
             <geometry>
-                <box size="1 0.5 0.1"/>
+                <box size="0.8 0.3 0.1"/>
             </geometry>
         </visual>
     </link>
@@ -26,53 +26,56 @@
             </geometry>
         </visual>   
     </link>     
-  <joint name="front_joint" type="fixed">
+  <joint name="front_joint_sign" type="fixed">
     <parent link="base_link"/>
     <child link="front"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
   </joint>
+
+
+<!--*****************REAR STEER***********************-->
 <!--****************************************-->
-<!--****************************************-->
-    <link name="link_left_f">
+    <link name="base_link_rear_steer">
         <visual>
             <material name="Red">
                 <color rgba="1 0 0 1"/>
             </material>
-            <origin rpy="0 0 0" xyz="-0.3 0.1 0.1"/>
+            <origin rpy="0 0 0" xyz="-0.2 0 0.1"/>
             <geometry>
-                <box size="0.05 0.05 0.1"/>
+                <box size="0.05 0.1 0.16"/>
             </geometry>
         </visual>   
     </link>     
-  <joint name="fixed_left_front" type="fixed">
+  <joint name="fixed_rear" type="continuous">
     <parent link="base_link"/>
-    <child link="link_left_f"/>
+    <child link="base_link_rear_steer"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 0"/>
+    <axis xyz="0 0 -1"/>
   </joint>
+  
 <!--****************************************-->
 <!--****************************************-->
-    <link name="link_left_f_2">
+    <link name="rear_steer">
         <visual>
-            <material name="Green">
-                <color rgba="0 1 0 1"/>
+            <material name="Red">
+                <color rgba="1 0 0 1"/>
             </material>
-            <origin rpy="0 0 0" xyz="-0.2 0.2 0.05"/>
+            <origin rpy="0 0 0" xyz="-0.2 0 0"/>
             <geometry>
-                <box size="0.05 0.2 0.05"/>
+                <box size="0.05 0.5 0.05"/>
             </geometry>
         </visual>   
     </link>     
-  <joint name="fixed_left_front_2" type="fixed">
-    <parent link="link_left_f"/>
-    <child link="link_left_f_2"/>
+  <joint name="rear_joint" type="fixed">
+    <parent link="base_link_rear_steer"/>
+    <child link="rear_steer"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 0"/>
   </joint>
+<!--****************REAR WHEELS************************-->
 <!--****************************************-->
-<!--****************************************-->
-  <link name="left_wheel_f">
+  <link name="left_wheel_rear">
         <visual>
    	        <material name="Black">
                 <color rgba="0 0 0 1"/>
@@ -85,16 +88,177 @@
     </link>
 <!--****************************************-->
 <!--****************************************-->   
-  <joint name="joint_left_wheel_f" type="revolute">
-    <parent link="link_left_f_2"/>
-    <child link="left_wheel_f"/>
+  <joint name="joint_left_wheel_rear" type="continuous">
+    <parent link="rear_steer"/>
+    <child link="left_wheel_rear"/>
     <origin xyz="-0.20 0.30 0" rpy="0 0 0" /> 
     <axis xyz="0 1 0" />
   <dynamics damping="0.7"/>
   <limit effort="1000" velocity="0.5" lower="-3.14" upper="3.14" />
   </joint>
 <!--****************************************-->
+<!--****************************************-->
+
+<link name="right_wheel_rear">
+        <visual>
+   	        <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>    	
+             <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.15" radius="0.12" />
+            </geometry>
+        </visual>
+    </link>
+<!--****************************************-->
 <!--****************************************-->   
+  <joint name="joint_right_wheel_rear" type="continuous">
+    <parent link="rear_steer"/>
+    <child link="right_wheel_rear"/>
+    <origin xyz="-0.20 -0.30 0" rpy="0 0 0" /> 
+    <axis xyz="0 1 0" />
+  <dynamics damping="0.7"/>
+  <limit effort="1000" velocity="0.5" lower="-3.14" upper="3.14" />
+  </joint>
+<!--****************************************-->
+<!--****************************************-->   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--*****************FRONT STEER***********************-->
+<!--****************************************-->
+    <link name="base_link_front_steer">
+        <visual>
+            <material name="Red">
+                <color rgba="1 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0.2 0 0.1"/>
+            <geometry>
+                <box size="0.05 0.1 0.16"/>
+            </geometry>
+        </visual>   
+    </link>     
+  <joint name="fixed_front" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_link_front_steer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  
+<!--****************************************-->
+<!--****************************************-->
+    <link name="front_steer">
+        <visual>
+            <material name="Red">
+                <color rgba="1 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0.2 0 0"/>
+            <geometry>
+                <box size="0.05 0.5 0.05"/>
+            </geometry>
+        </visual>   
+    </link>     
+  <joint name="front_joint" type="fixed">
+    <parent link="base_link_front_steer"/>
+    <child link="front_steer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  
+<!--****************REAR WHEELS************************-->
+<!--****************************************-->
+  <link name="left_wheel_front">
+        <visual>
+   	        <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>    	
+             <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.15" radius="0.12" />
+            </geometry>
+        </visual>
+    </link>
+<!--****************************************-->
+<!--****************************************-->   
+  <joint name="joint_left_wheel_front" type="continuous">
+    <parent link="front_steer"/>
+    <child link="left_wheel_front"/>
+    <origin xyz="0.20 0.30 0" rpy="0 0 0" /> 
+    <axis xyz="0 0 1" />
+  <dynamics damping="0.7"/>
+  <limit effort="1000" velocity="0.5" lower="-3.14" upper="3.14" />
+  </joint>
+<!--****************************************-->
+<!--****************************************-->
+
+<link name="right_wheel_front">
+        <visual>
+   	        <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>    	
+             <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.15" radius="0.12" />
+            </geometry>
+        </visual>
+    </link>
+<!--****************************************-->
+<!--****************************************-->   
+  <joint name="joint_right_wheel_front" type="continuous">
+    <parent link="front_steer"/>
+    <child link="right_wheel_front"/>
+    <origin xyz="0.20 -0.30 0" rpy="0 0 0" /> 
+    <axis xyz="0 0 1" />
+  <dynamics damping="0.7"/>
+  <limit effort="1000" velocity="0.5" lower="-3.14" upper="3.14" />
+  </joint>
+<!--****************************************-->
+<!--****************************************-->   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link name="sign_left_front">
         <visual>
             <material name="White">
@@ -107,11 +271,40 @@
         </visual>   
     </link>     
   <joint name="fixed_sign_left_f" type="fixed">
-    <parent link="left_wheel_f"/>
+    <parent link="left_wheel_rear"/>
     <child link="sign_left_front"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
   </joint>
+  
+    <link name="sign_right_rear">
+        <visual>
+            <material name="White">
+                <color rgba="1 1 1 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0 0 0.12"/>
+            <geometry>
+                <sphere radius="0.02" />
+            </geometry>
+        </visual>   
+    </link>     
+  <joint name="fixed_sign_right_f" type="fixed">
+    <parent link="right_wheel_rear"/>
+    <child link="sign_right_rear"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

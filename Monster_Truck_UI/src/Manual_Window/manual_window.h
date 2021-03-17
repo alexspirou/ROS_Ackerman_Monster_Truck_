@@ -8,6 +8,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include "../ROS_src/_ros.h"
+#include "../ROS_src/rviz.h"
 
 namespace Ui {
 class Manual_Window;
@@ -34,6 +35,7 @@ private:
     QTimer* timer;
     QEvent* event;
     _Ros* ros_f;
+    rviz* rviz_obj;
     int x = 0;
 
 
