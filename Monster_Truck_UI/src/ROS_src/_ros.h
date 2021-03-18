@@ -13,8 +13,10 @@
 #include "geometry_msgs/TransformStamped.h"
 #include "sensor_msgs/JointState.h"
 #include "std_msgs/Header.h"
+#include "std_msgs/Int32.h"
 
 static geometry_msgs::Vector3 ultrasonic_msg;
+static std_msgs::Int32 optical_encoder_msg;
 
 class _Ros
 {
@@ -49,6 +51,25 @@ public:
         ros::spinOnce();
 
     }
+    //Optical encoder topic
+    static void oe_callback(const std_msgs::Int32 ::ConstPtr& us_msg){
+
+
+//        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
+
+        optical_encoder_msg = *us_msg;
+        //qDebug() << us_msg->x << us_msg->y << us_msg->z;
+    }
+    void oe_subscriber()
+    {
+        ros::Rate loop_rate(5);
+        optical_encoder_sub = n->subscribe("optical_encoder",100,oe_callback);
+        loop_rate.sleep();
+        ros::spinOnce();
+
+    }
+
+
 
     void speed_subscriber();
 private:
@@ -65,6 +86,8 @@ private:
     std_msgs::UInt16 servo_comm;
     //ultrasonic_sensors topic
     ros::Subscriber ultrasonic_sub;
+    //Optical encoder topic
+    ros::Subscriber optical_encoder_sub;
 
 
 };

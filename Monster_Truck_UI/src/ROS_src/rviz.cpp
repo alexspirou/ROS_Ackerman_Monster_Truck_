@@ -21,6 +21,7 @@ rviz::rviz()
 
     begin = ros::Time::now();
 
+
     rviz_publisher = n->advertise<sensor_msgs::JointState>("/joint_states", 200);
 
 //    transform = new geometry_msgs::TransformStamped();
@@ -38,7 +39,7 @@ rviz::rviz()
 void rviz::move_left_rear(){
 
     x += 0.1;
-    left_rear.header.stamp.sec = begin.toSec() + 60;
+    left_rear.header.stamp.now();
     left_rear.position.at(0) = x;
     left_rear.velocity.at(0)= 50;
     rviz_publisher.publish(left_rear);
@@ -74,10 +75,10 @@ void rviz::turn_right_pressed(){
     left_front.header.stamp.sec = begin.toSec() + 60;
     left_front.position.at(0)  = 1.0;
     left_front.velocity.at(0)  = 50;
-    right_front.header.stamp.sec = begin.toSec() + 50;
+    rviz_publisher.publish(left_front);
+    right_front.header.stamp.sec = begin.toSec() + 60;
     right_front.position.at(0) = 1.0;
     right_front.velocity.at(0) = 50;
-    rviz_publisher.publish(left_front);
     rviz_publisher.publish(right_front);
 }
 
@@ -85,10 +86,10 @@ void rviz::turn_left_pressed(){
     left_front.header.stamp.sec = begin.toSec() + 60;
     left_front.position.at(0)  = -1.0;
     left_front.velocity.at(0)  = 50;
-    right_front.header.stamp.sec = begin.toSec() + 50;
+    rviz_publisher.publish(left_front);
+    right_front.header.stamp.sec = begin.toSec() + 60;
     right_front.position.at(0) = -1.0;
     right_front.velocity.at(0) = 50;
-    rviz_publisher.publish(left_front);
     rviz_publisher.publish(right_front);
 
 }
@@ -96,10 +97,10 @@ void rviz::turn_right_released(){
     left_front.header.stamp.sec = begin.toSec() + 60;
     left_front.position.at(0)  = 0;
     left_front.velocity.at(0)  = 50;
-    right_front.header.stamp.sec = begin.toSec() + 50;
+    rviz_publisher.publish(left_front);
+    right_front.header.stamp.sec = begin.toSec() + 60;
     right_front.position.at(0) = 0;
     right_front.velocity.at(0) = 50;
-    rviz_publisher.publish(left_front);
     rviz_publisher.publish(right_front);
 
 }
@@ -108,10 +109,10 @@ void rviz::turn_left_released(){
     left_front.header.stamp.sec = begin.toSec() + 60;
     left_front.position.at(0)  = 0;
     left_front.velocity.at(0)  = 50;
-    right_front.header.stamp.sec = begin.toSec() + 50;
+    rviz_publisher.publish(left_front);
+    right_front.header.stamp.sec = begin.toSec() + 60;
     right_front.position.at(0) = 0;
     right_front.velocity.at(0) = 50;
-    rviz_publisher.publish(left_front);
     rviz_publisher.publish(right_front);
 
 }

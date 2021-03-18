@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Monster Truck Ui ");
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(ultrasonic_measurements()));
+    connect(timer, SIGNAL(timeout()),this,SLOT(optical_encoder_measurements()));
     timer->start(500);
     manual_window = new Manual_Window();
     //ROS
@@ -87,4 +88,15 @@ void MainWindow::ultrasonic_measurements()
     ros_f->ultrasonic_subscriber();
 }
 
+void MainWindow::optical_encoder_measurements(){
 
+    ui->optical_encoder_lcd->display(optical_encoder_msg.data);
+    ros_f->oe_subscriber();
+
+}
+
+
+void MainWindow::on_check_dc_motor_clicked()
+{
+    ros_f->qt_command_publisher(4);
+}

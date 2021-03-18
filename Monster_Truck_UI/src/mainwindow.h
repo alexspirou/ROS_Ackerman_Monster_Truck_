@@ -28,7 +28,8 @@ public Q_SLOTS:
     void on_Publish_PWM_main_window_clicked();
     void on_Set_value_clicked();
     void ultrasonic_measurements();
-
+    void optical_encoder_measurements();
+    void on_check_dc_motor_clicked();
 
 private:
     Ui::MainWindow *ui;
