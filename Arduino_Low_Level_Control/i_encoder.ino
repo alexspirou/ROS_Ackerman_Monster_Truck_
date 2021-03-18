@@ -6,8 +6,7 @@ float calculate_rpm(){
     previus_millis = current_millis;
 
     rpm = (float)(encoder_value *60 / enc_count);
-
-//    if(sp > 0 || rpm > 0){
+//    if(sp >0 || rpm > 0){
 //      Serial.print("PWM VALUE: ");
 //      Serial.print(sp);
 //       Serial.print('\t');
@@ -22,11 +21,9 @@ float calculate_rpm(){
 //    }
       cm = (0.11*2*3.14 *(rpm)/60); 
     encoder_value = 0;
-//    rpm_msg.data = int(cm);
-//    optical_encoder_publisher.publish(&rpm_msg);
   }
-  
-
+  rpm_msg.data = int(cm*10);
+  optical_encoder_publisher.publish(&rpm_msg);
   return cm;
 }
 

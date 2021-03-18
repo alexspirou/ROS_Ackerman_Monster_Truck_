@@ -107,3 +107,4 @@ void auto_navigation(int& sp);
 void auto_GUI();
 void manual_GUI();
 void stop_GUI();
+void check_GUI();

@@ -1,9 +1,9 @@
-void move_for(int sp){
+void move_for(int sp_){
     
 
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, HIGH);
-    analogWrite(en_a, sp);
+    analogWrite(en_a, sp_);
    
     
 
@@ -24,7 +24,6 @@ void move_backwards(int sp){
    digitalWrite(in_1, HIGH);
    digitalWrite(in_2, LOW);
    analogWrite(en_a, abs(sp));
-   rpm_publisher();
    
 
 }

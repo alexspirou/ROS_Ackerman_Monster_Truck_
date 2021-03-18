@@ -4,6 +4,7 @@ void auto_navigation(int& sp){
   if(u1() > obstacle_distance && u2() > obstacle_distance && u3() > obstacle_distance){
     move_for(sp);
     u1();u2();u3();
+    calculate_rpm();
     if(cm < 0.10){
       counter ++;
       
@@ -12,13 +13,16 @@ void auto_navigation(int& sp){
     if (counter > 6){
         move_backwards(sp);
         u1();u2();u3();
+        calculate_rpm();
         turn_right();
         delay(500);
         u1();u2();u3();
+        calculate_rpm();
         move_backwards(sp);
         turn_left();
         delay(500);
         u1();u2();u3();
+        calculate_rpm();
         counter = 0;
     }
     
@@ -28,6 +32,7 @@ void auto_navigation(int& sp){
       move_for(sp);
       turn_right();
       u1();u2();u3();
+      calculate_rpm();
  }
  else if(u2() < obstacle_distance/2){
       move_for(sp);
@@ -37,22 +42,26 @@ void auto_navigation(int& sp){
   else if(u1() <= obstacle_distance){
     stop_stop();
     u1();u2();u3();
+    calculate_rpm();
     delay(500);
     move_backwards(sp);
     u1();u2();u3();
     delay(800);
     stop_stop();
     u1();u2();u3();
+    calculate_rpm();
     delay(200);
     if(u3() > u2()){
         move_for(sp);
         turn_right();
         u1();u2();u3();
+        calculate_rpm();
       }
     else if(u2() > u3()){
        move_for(sp);
        turn_left();
        u1();u2();u3();
+       calculate_rpm();
     }
    }
 

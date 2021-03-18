@@ -16,7 +16,7 @@ void setup() {
   pinMode(in_2, OUTPUT);
   //Optical Encoder
   pinMode(enc, INPUT_PULLUP);
-  //attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
+  attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
   
   //Motors Check
   //check_servo();

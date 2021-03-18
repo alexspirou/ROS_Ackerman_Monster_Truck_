@@ -40,3 +40,11 @@ void stop_GUI(){
      
   }
 }
+
+void check_GUI(){
+  if(qt_msg == 4){
+  move_for(sp);
+  u1();u2();u3();
+  calculate_rpm();
+  }
+}
