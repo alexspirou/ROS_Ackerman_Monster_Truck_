@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: Monster_Truck_UI
+Description: Description of Monster_Truck_UI
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

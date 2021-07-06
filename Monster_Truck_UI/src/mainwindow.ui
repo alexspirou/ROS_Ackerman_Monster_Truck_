@@ -232,7 +232,7 @@
      <string>Check DC Motor</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -253,6 +253,45 @@
       <widget class="QLCDNumber" name="optical_encoder_lcd"/>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="lights_on_button">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>10</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LIGHTS ON</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="lights_off_button">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LIGHTS OFF</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="lights_blinking_button">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>10</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>BLINKING LIGHT</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -30,7 +30,11 @@ public Q_SLOTS:
     void ultrasonic_measurements();
     void optical_encoder_measurements();
     void on_check_dc_motor_clicked();
+    void on_lights_on_button_clicked();
+    void on_lights_off_button_clicked();
+    void on_lights_blinking_button_clicked();
 
+    Manual_Window* get_manual_window(){return manual_window; }
 private:
     Ui::MainWindow *ui;
     _Ros* ros_f;

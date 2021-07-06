@@ -29,11 +29,12 @@ public:
     void set_pwm(int pwm_f) {pwm_msg.linear.x = pwm_f;}
     void set_pwm_z(int pwm_f) {pwm_msg.angular.z = pwm_f;}
     //qt_command topic
-    void qt_command_publisher(unsigned f_command);
+    void qt_command_publisher(unsigned short  f_command);
     //Servo topic
-    void servo_command_publisher(unsigned f_servo_command);
+    void servo_command_publisher(unsigned short f_servo_command);
     void set_servo_command(int servo_command_f);
-
+    //Led topic
+    void led_command_publisher(unsigned short  f_command);
     //ultrasonic_sensors topic
     static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
 
@@ -88,6 +89,9 @@ private:
     ros::Subscriber ultrasonic_sub;
     //Optical encoder topic
     ros::Subscriber optical_encoder_sub;
+    //Led topic
+    ros::Publisher led_command ;
+    std_msgs::UInt16 led_comm;
 
 
 };

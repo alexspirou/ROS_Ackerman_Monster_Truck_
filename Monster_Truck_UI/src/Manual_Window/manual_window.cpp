@@ -13,7 +13,7 @@ Manual_Window::Manual_Window(QWidget *parent) :
     this->setWindowTitle("Monster Truck Teleoparation ");
     key = new  Keyboard_Events();
     ros_f = new _Ros();
-    rviz_obj = new rviz();
+    //rviz_obj = new rviz();
     ros_f->set_pwm(0);
     ros_f->pwm_publisher();
     qDebug() << "manual window " ;
@@ -22,6 +22,9 @@ Manual_Window::Manual_Window(QWidget *parent) :
 Manual_Window::~Manual_Window()
 {
     delete ui;delete key;delete timer; delete ros_f;
+    ros_f->qt_command_publisher(0);
+    qDebug() << "manual window destructor " ;
+
 }
 
 void Manual_Window::on_info_button_clicked()
@@ -40,28 +43,31 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             //forward
             ros_f->set_pwm(60);
             ros_f->pwm_publisher();
-            rviz_obj->move_left_rear();
-            rviz_obj->move_right_rear();
+ //           rviz_obj->move_left_rear();
+//            rviz_obj->move_right_rear();
+            qDebug() << "pressed" ;
+
             ui->forward_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_2:
             //backward
             ros_f->set_pwm(-60);
             ros_f->pwm_publisher();
-            rviz_obj->move_left_rear_b();
-            rviz_obj->move_right_rear_b();
+
+//            rviz_obj->move_left_rear_b();
+//            rviz_obj->move_right_rear_b();
             ui->back_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_6:
             //right
             ros_f->servo_command_publisher(1);
             ui->right_label->setStyleSheet("QLabel { background-color : white; color : black; }");
-            rviz_obj->turn_right_pressed();
+            //rviz_obj->turn_right_pressed();
             break;
         case Qt::Key_4:
             //left
             ros_f->servo_command_publisher(2);
-            rviz_obj->turn_left_pressed();
+            //rviz_obj->turn_left_pressed();
             ui->left_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_Z:
@@ -78,6 +84,8 @@ void Manual_Window::keyReleaseEvent(QKeyEvent *event){
             ui->forward_label->setStyleSheet("");
             ros_f->set_pwm(0);
             ros_f->pwm_publisher();
+            qDebug() << "released" ;
+
             break;
         case Qt::Key_2:
             //backward
@@ -88,13 +96,13 @@ void Manual_Window::keyReleaseEvent(QKeyEvent *event){
         case Qt::Key_6:
             //right
             ros_f->servo_command_publisher(0);
-            rviz_obj->turn_right_released();
+            //rviz_obj->turn_right_released();
             ui->right_label->setStyleSheet("");
             break;
         case Qt::Key_4:
             //left
             ros_f->servo_command_publisher(0);
-            rviz_obj->turn_left_released();
+            //rviz_obj->turn_left_released();
             ui->left_label->setStyleSheet("");
             break;
         case Qt::Key_Z:

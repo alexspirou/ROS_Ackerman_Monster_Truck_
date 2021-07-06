@@ -45,20 +45,10 @@ void MainWindow::on_Publisher_Button_clicked()
 
 void MainWindow::on_Manual_clicked()
 {
-
     ros_f->qt_command_publisher(1);
-
     manual_window->show();
-
     manual_window->exec();
-    /*
-     new window here
-     implemantation for manual movement
-     read keyboard inputs
-
-    */
-
-
+    ros_f->qt_command_publisher(0);
 }
 
 void MainWindow::on_Stop_clicked()
@@ -77,8 +67,6 @@ void MainWindow::on_Set_value_clicked()
     int pwm_value = ui->PWM_spinBox->text().toInt();
     ros_f->set_pwm(pwm_value);
 }
-
-
 
 void MainWindow::ultrasonic_measurements()
 {
@@ -100,3 +88,20 @@ void MainWindow::on_check_dc_motor_clicked()
 {
     ros_f->qt_command_publisher(4);
 }
+
+void MainWindow::on_lights_on_button_clicked()
+{
+    ros_f->led_command_publisher(1);
+}
+
+void MainWindow::on_lights_off_button_clicked()
+{
+    ros_f->led_command_publisher(0);
+}
+
+void MainWindow::on_lights_blinking_button_clicked()
+{
+    ros_f->led_command_publisher(3);
+
+}
+

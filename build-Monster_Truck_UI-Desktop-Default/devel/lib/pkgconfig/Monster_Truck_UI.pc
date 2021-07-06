@@ -1,0 +1,8 @@
+prefix=/home/alex/catkin_ws/src/ROS_Ackerman_Monster_Truck_/build-Monster_Truck_UI-Desktop-Default/devel
+
+Name: Monster_Truck_UI
+Description: Description of Monster_Truck_UI
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
