@@ -1,5 +1,6 @@
 void setup() {
-
+  //Led setup
+  pinMode(led_pin, OUTPUT);
   //Ultrasonic Sensors Setup
   pinMode(u1_trig, OUTPUT); // Sets the trigPin as an OUTPUT
   pinMode(u1_echo, INPUT); // Sets the echoPin as an INPUT
@@ -32,6 +33,7 @@ void setup() {
   nh->subscribe(motor);
   nh->subscribe(qt_sub);
   nh->subscribe(servo);
+  nh->subscribe(led);
   nh->advertise(optical_encoder_publisher);
   nh->advertise(ultrasonic_sensors_publisher);
 

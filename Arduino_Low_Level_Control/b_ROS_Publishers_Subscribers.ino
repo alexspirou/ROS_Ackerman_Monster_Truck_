@@ -12,3 +12,6 @@ ros::Subscriber <std_msgs::UInt16> qt_sub("/qt", &callback_qt);
 
 //--Servo Subscriber
 ros::Subscriber <std_msgs::UInt16> servo("/servo", &callback_servo); 
+
+//--LED Subscriber
+ros::Subscriber <std_msgs::UInt16> led("/led", &callback_led); 

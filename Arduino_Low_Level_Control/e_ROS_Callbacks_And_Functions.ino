@@ -1,4 +1,9 @@
 //--Callback function for motors
+void callback_led(const std_msgs::UInt16& led_msg_f)
+{
+  led_msg = led_msg_f.data;
+}
+
 void callback_motors(const geometry_msgs::Twist& cmd_vel)
 {
   sp = cmd_vel.linear.x; 

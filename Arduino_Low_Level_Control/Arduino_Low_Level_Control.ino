@@ -20,11 +20,15 @@ geometry_msgs::Vector3 ultrasonic_sensors; //ultrasonic_sensors.x ->middle
 //ultrasonic_sensors.y ->right
 //ultrasonic_sensors.z ->left
 std_msgs::Int32 rpm_msg;
+int led_msg = 0;
 int  qt_msg = 0;
 int servo_command = 0;
 int counter = 0;
 //--Booleans
 bool one = true;
+//LED
+
+const int led_pin = 10;
 
 //Ultrasonic Sensors
 
@@ -75,6 +79,7 @@ void balance_speed(float current_cm, float des_cm, int& pwm_);
 void callback_motors(const geometry_msgs::Twist& cmd_vel);
 void callback_servo(const std_msgs::UInt16& servo_msg);
 void callback_qt(const std_msgs::UInt16& qt_msg_f);
+void callback_led(const std_msgs::UInt16& led_msg_f);
 void rpm_publisher();
 void ultrasonic_sensors_publisher_call();
 
@@ -108,3 +113,4 @@ void auto_GUI();
 void manual_GUI();
 void stop_GUI();
 void check_GUI();
+void led_on_off();

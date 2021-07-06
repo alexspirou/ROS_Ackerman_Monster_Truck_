@@ -13,10 +13,10 @@ void manual_GUI(){
 
        //sp = pwm speed
        if (sp >0){
-        move_for(100);
+        move_for(150);
        }
        else if(sp<0){
-        move_backwards(100);
+        move_backwards(150);
        }
        else{
         stop_stop();
@@ -38,6 +38,7 @@ void stop_GUI(){
      
      stop_stop();
      u1();u2();u3();
+
      
   }
 }
@@ -48,4 +49,26 @@ void check_GUI(){
   u1();u2();u3();
   calculate_rpm();
   }
+}
+
+void led_on_off()
+{
+       //ON/OFF LED
+     if(led_msg ==0)
+     {
+      digitalWrite(led_pin, LOW);
+     }
+     else if(led_msg ==1)
+     {
+      digitalWrite(led_pin, HIGH);
+     }
+     else if(led_msg ==3)
+     {
+      
+      digitalWrite(led_pin, HIGH);
+      delay(50);
+      digitalWrite(led_pin, LOW);
+      delay(50);
+
+     }
 }
