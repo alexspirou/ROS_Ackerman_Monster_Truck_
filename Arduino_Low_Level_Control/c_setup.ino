@@ -19,8 +19,8 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(enc), update_encoder, RISING);
   
   //Motors Check
-  //check_servo();
-//  check_motors();
+  //check_servo();  
+  //check_motors();
 //turn_right();
   //Communication 
   nh->getHardware()->setBaud(115200);

@@ -5,6 +5,6 @@ void loop() {
   stop_GUI();
   check_GUI();
   nh->spinOnce();
-  delay(5);
 
+  delay(2);
 }

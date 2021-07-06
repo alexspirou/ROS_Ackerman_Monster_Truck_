@@ -1,4 +1,5 @@
-void auto_GUI(){
+void auto_GUI()
+{
   
   if(qt_msg == 2){
     if (sp > safety_speed) {sp = safety_speed;}
@@ -12,10 +13,10 @@ void manual_GUI(){
 
        //sp = pwm speed
        if (sp >0){
-        move_for(40);
+        move_for(100);
        }
        else if(sp<0){
-        move_backwards(40);
+        move_backwards(100);
        }
        else{
         stop_stop();
