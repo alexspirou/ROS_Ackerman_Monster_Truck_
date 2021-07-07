@@ -18,13 +18,13 @@ class MainWindow : public QMainWindow
 public:
 
     explicit MainWindow(QWidget *parent = nullptr);
-    virtual ~MainWindow();
-
+    virtual ~MainWindow() override;
+    virtual void keyPressEvent(QKeyEvent *event) override;
 
 public Q_SLOTS:
-    void on_Publisher_Button_clicked();
-    void on_Manual_clicked();
-    void on_Stop_clicked();
+    void on_auto_button_clicked();              //Auto navigation
+    void on_Manual_clicked();                   //Manual dialog exec
+    void on_Stop_clicked();                     //Stop robot
     void on_Publish_PWM_main_window_clicked();
     void on_Set_value_clicked();
     void ultrasonic_measurements();
@@ -35,9 +35,11 @@ public Q_SLOTS:
     void on_lights_blinking_button_clicked();
 
     Manual_Window* get_manual_window(){return manual_window; }
+private slots:
+
 private:
     Ui::MainWindow *ui;
-    _Ros* ros_f;
+    _Ros* ros_obj;
     QTimer* timer;
     Keyboard_Events key;
     Manual_Window* manual_window;

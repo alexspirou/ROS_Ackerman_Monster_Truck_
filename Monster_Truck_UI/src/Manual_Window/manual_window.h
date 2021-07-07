@@ -21,15 +21,14 @@ class Manual_Window : public QDialog
 public:
     explicit Manual_Window(QWidget *parent = nullptr);
     virtual ~Manual_Window() override;
-
+    virtual void keyPressEvent(QKeyEvent *event) override;
+    virtual void keyReleaseEvent(QKeyEvent *event) override;
 
 public Q_SLOTS:
     void on_info_button_clicked();
-    void keyboard_events();
 
 private:
-    virtual void keyPressEvent(QKeyEvent *event) override;
-    virtual void keyReleaseEvent(QKeyEvent *event) override;
+
     Ui::Manual_Window *ui;
     Keyboard_Events* key;
     QTimer* timer;

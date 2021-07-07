@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[15];
-    char stringdata0[333];
+    char stringdata0[328];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,24 +32,24 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 27), // "on_Publisher_Button_clicked"
-QT_MOC_LITERAL(2, 39, 0), // ""
-QT_MOC_LITERAL(3, 40, 17), // "on_Manual_clicked"
-QT_MOC_LITERAL(4, 58, 15), // "on_Stop_clicked"
-QT_MOC_LITERAL(5, 74, 34), // "on_Publish_PWM_main_window_cl..."
-QT_MOC_LITERAL(6, 109, 20), // "on_Set_value_clicked"
-QT_MOC_LITERAL(7, 130, 23), // "ultrasonic_measurements"
-QT_MOC_LITERAL(8, 154, 28), // "optical_encoder_measurements"
-QT_MOC_LITERAL(9, 183, 25), // "on_check_dc_motor_clicked"
-QT_MOC_LITERAL(10, 209, 27), // "on_lights_on_button_clicked"
-QT_MOC_LITERAL(11, 237, 28), // "on_lights_off_button_clicked"
-QT_MOC_LITERAL(12, 266, 33), // "on_lights_blinking_button_cli..."
-QT_MOC_LITERAL(13, 300, 17), // "get_manual_window"
-QT_MOC_LITERAL(14, 318, 14) // "Manual_Window*"
+QT_MOC_LITERAL(1, 11, 22), // "on_auto_button_clicked"
+QT_MOC_LITERAL(2, 34, 0), // ""
+QT_MOC_LITERAL(3, 35, 17), // "on_Manual_clicked"
+QT_MOC_LITERAL(4, 53, 15), // "on_Stop_clicked"
+QT_MOC_LITERAL(5, 69, 34), // "on_Publish_PWM_main_window_cl..."
+QT_MOC_LITERAL(6, 104, 20), // "on_Set_value_clicked"
+QT_MOC_LITERAL(7, 125, 23), // "ultrasonic_measurements"
+QT_MOC_LITERAL(8, 149, 28), // "optical_encoder_measurements"
+QT_MOC_LITERAL(9, 178, 25), // "on_check_dc_motor_clicked"
+QT_MOC_LITERAL(10, 204, 27), // "on_lights_on_button_clicked"
+QT_MOC_LITERAL(11, 232, 28), // "on_lights_off_button_clicked"
+QT_MOC_LITERAL(12, 261, 33), // "on_lights_blinking_button_cli..."
+QT_MOC_LITERAL(13, 295, 17), // "get_manual_window"
+QT_MOC_LITERAL(14, 313, 14) // "Manual_Window*"
 
     },
-    "MainWindow\0on_Publisher_Button_clicked\0"
-    "\0on_Manual_clicked\0on_Stop_clicked\0"
+    "MainWindow\0on_auto_button_clicked\0\0"
+    "on_Manual_clicked\0on_Stop_clicked\0"
     "on_Publish_PWM_main_window_clicked\0"
     "on_Set_value_clicked\0ultrasonic_measurements\0"
     "optical_encoder_measurements\0"
@@ -111,7 +111,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_Publisher_Button_clicked(); break;
+        case 0: _t->on_auto_button_clicked(); break;
         case 1: _t->on_Manual_clicked(); break;
         case 2: _t->on_Stop_clicked(); break;
         case 3: _t->on_Publish_PWM_main_window_clicked(); break;

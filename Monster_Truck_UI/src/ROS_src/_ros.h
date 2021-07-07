@@ -25,24 +25,39 @@ public:
     ~_Ros();
 
     //cmd_vel topic
-    void pwm_publisher();
-    void set_pwm(int pwm_f) {pwm_msg.linear.x = pwm_f;}
-    void set_pwm_z(int pwm_f) {pwm_msg.angular.z = pwm_f;}
+    //Publish to cmd_vel pwm values
+    void cmd_vel_publisher();
+    //Set specific pwm value in linear.x
+    void set_cmd_vel_msg(int pwm_f) {cmd_vel_msg.linear.x = pwm_f;}
+
+    //pwm_value topic
+    void pwm_value_publisher();
+    //Set specific pwm value in linear.x
+    void set_pwm_value(int pwm_f) {pwm_value_msg.linear.x = pwm_f;}
+
     //qt_command topic
+
+    //Publish qt commands
     void qt_command_publisher(unsigned short  f_command);
+
     //Servo topic
+
+    //Publish servo commands
     void servo_command_publisher(unsigned short f_servo_command);
+    //Set specific servo value
     void set_servo_command(int servo_command_f);
+
     //Led topic
+
+    //Publish LED commandss
     void led_command_publisher(unsigned short  f_command);
+
+
     //ultrasonic_sensors topic
-    static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg){
 
-
-//        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
-
+    static void ultrasonic_callback(const geometry_msgs::Vector3::ConstPtr& us_msg)
+    {
         ultrasonic_msg = *us_msg;
-        //qDebug() << us_msg->x << us_msg->y << us_msg->z;
     }
     void ultrasonic_subscriber()
     {
@@ -53,13 +68,10 @@ public:
 
     }
     //Optical encoder topic
-    static void oe_callback(const std_msgs::Int32 ::ConstPtr& us_msg){
 
-
-//        ROS_INFO("Middle: [%f]\nRight: [%f]\nLeft:[%f]" , us_msg->x, us_msg->y , us_msg->z );
-
+    static void oe_callback(const std_msgs::Int32 ::ConstPtr& us_msg)
+    {
         optical_encoder_msg = *us_msg;
-        //qDebug() << us_msg->x << us_msg->y << us_msg->z;
     }
     void oe_subscriber()
     {
@@ -67,31 +79,30 @@ public:
         optical_encoder_sub = n->subscribe("optical_encoder",100,oe_callback);
         loop_rate.sleep();
         ros::spinOnce();
-
     }
 
-
-
-    void speed_subscriber();
 private:
 
     ros::NodeHandle *n;
     //cmd_vel topic
-    ros::Publisher pwm_pub ;
-    geometry_msgs::Twist pwm_msg;
+    ros::Publisher cmd_vel_pub ;
+    geometry_msgs::Twist cmd_vel_msg;
+    //Pwm_value topic
+    ros::Publisher pwm_value ;
+    geometry_msgs::Twist pwm_value_msg;
     //Qt topic
     ros::Publisher qt_command ;
-    std_msgs::UInt16 qt_comm;
+    std_msgs::UInt16 qt_msg;
     //Servo topic
     ros::Publisher servo_command ;
-    std_msgs::UInt16 servo_comm;
+    std_msgs::UInt16 servo_msg;
     //ultrasonic_sensors topic
     ros::Subscriber ultrasonic_sub;
     //Optical encoder topic
     ros::Subscriber optical_encoder_sub;
     //Led topic
     ros::Publisher led_command ;
-    std_msgs::UInt16 led_comm;
+    std_msgs::UInt16 led_msg;
 
 
 };

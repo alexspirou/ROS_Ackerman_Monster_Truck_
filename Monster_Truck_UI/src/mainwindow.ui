@@ -47,7 +47,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="Publisher_Button">
+      <widget class="QPushButton" name="auto_button">
        <property name="text">
         <string>Auto</string>
        </property>

@@ -37,7 +37,7 @@ public:
     QSpinBox *PWM_spinBox;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
-    QPushButton *Publisher_Button;
+    QPushButton *auto_button;
     QPushButton *Manual;
     QPushButton *Stop;
     QWidget *layoutWidget2;
@@ -104,10 +104,10 @@ public:
         horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        Publisher_Button = new QPushButton(layoutWidget1);
-        Publisher_Button->setObjectName(QStringLiteral("Publisher_Button"));
+        auto_button = new QPushButton(layoutWidget1);
+        auto_button->setObjectName(QStringLiteral("auto_button"));
 
-        horizontalLayout->addWidget(Publisher_Button);
+        horizontalLayout->addWidget(auto_button);
 
         Manual = new QPushButton(layoutWidget1);
         Manual->setObjectName(QStringLiteral("Manual"));
@@ -259,7 +259,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         PWM_value->setText(QApplication::translate("MainWindow", "PWM Value", Q_NULLPTR));
-        Publisher_Button->setText(QApplication::translate("MainWindow", "Auto", Q_NULLPTR));
+        auto_button->setText(QApplication::translate("MainWindow", "Auto", Q_NULLPTR));
         Manual->setText(QApplication::translate("MainWindow", "Manual", Q_NULLPTR));
         Stop->setText(QApplication::translate("MainWindow", "Stop", Q_NULLPTR));
         Set_value->setText(QApplication::translate("MainWindow", "Set Value", Q_NULLPTR));
