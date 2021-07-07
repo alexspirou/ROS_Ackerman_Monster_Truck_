@@ -31,6 +31,7 @@ void setup() {
   nh->initNode();
   //ROS--Publishers-Subscribers
   nh->subscribe(motor);
+  nh->subscribe(pwm_sub);
   nh->subscribe(qt_sub);
   nh->subscribe(servo);
   nh->subscribe(led);

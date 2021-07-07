@@ -10,24 +10,20 @@
 #include "TimerOne.h"
 
 
-
 //--ROS
 ros::NodeHandle* nh = new ros::NodeHandle();
 
 //--Variables for each message
 ///
-geometry_msgs::Vector3 ultrasonic_sensors; //ultrasonic_sensors.x ->middle
-//ultrasonic_sensors.y ->right
-//ultrasonic_sensors.z ->left
+geometry_msgs::Vector3 ultrasonic_sensors;
+
 std_msgs::Int32 rpm_msg;
 int led_msg = 0;
 int  qt_msg = 0;
 int servo_command = 0;
 int counter = 0;
-//--Booleans
-bool one = true;
-//LED
 
+//LED
 const int led_pin = 10;
 
 //Ultrasonic Sensors
@@ -53,6 +49,7 @@ const int en_a = 5;
 const int in_1 = 4;
 const int in_2 = 12;
 //*******************//
+int motor_speed = 0;
 int sp = 0;
 //*******************//
 
@@ -77,6 +74,7 @@ void balance_speed(float current_cm, float des_cm, int& pwm_);
 
 //--ROS Callbacks and functions
 void callback_motors(const geometry_msgs::Twist& cmd_vel);
+void pwm_callback(const geometry_msgs::Twist& pwm_msg);
 void callback_servo(const std_msgs::UInt16& servo_msg);
 void callback_qt(const std_msgs::UInt16& qt_msg_f);
 void callback_led(const std_msgs::UInt16& led_msg_f);

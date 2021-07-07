@@ -1,31 +1,34 @@
 void auto_GUI()
 {
-  
-  if(qt_msg == 2){
+    if(qt_msg == 2){
     if (sp > safety_speed) {sp = safety_speed;}
     balance_speed(cm, des_cm, sp);
-    auto_navigation(sp);
+    auto_navigation(motor_speed);
   }
 }
 
 void manual_GUI(){
   if(qt_msg == 1){
 
-       //sp = pwm speed
-       if (sp >0){
-        move_for(150);
+       if (sp >0)
+       {
+        move_for(motor_speed);
        }
-       else if(sp<0){
-        move_backwards(150);
+       else if(sp<0)
+       {
+        move_backwards(motor_speed);
        }
-       else{
+       else
+       {
         stop_stop();
        }
        //servo command is a command sent from Qt
-       if (servo_command == 1){
+       if (servo_command == 1)
+       {
          manual_turn_right();
        }
-       else if (servo_command == 2){
+       else if (servo_command == 2)
+       {
            manual_turn_left();
        }
        else{

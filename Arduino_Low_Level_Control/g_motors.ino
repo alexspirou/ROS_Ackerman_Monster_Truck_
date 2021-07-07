@@ -10,12 +10,9 @@ void move_for(int sp_){
 }
 void stop_stop()
 {
-    
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, LOW);
-    analogWrite(en_a, sp);
-    
-    
+    analogWrite(en_a, sp);   
 
 }
 void move_backwards(int sp){

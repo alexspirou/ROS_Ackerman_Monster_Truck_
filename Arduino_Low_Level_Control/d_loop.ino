@@ -1,5 +1,5 @@
-void loop() {
-
+void loop() 
+{
   auto_GUI();
   manual_GUI();
   stop_GUI();
