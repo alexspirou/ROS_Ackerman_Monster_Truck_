@@ -33,8 +33,6 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             //forward
             ros_f->set_cmd_vel_msg(1);
             ros_f->cmd_vel_publisher();
-//           rviz_obj->move_left_rear();
-//           rviz_obj->move_right_rear();
             qDebug() << "pressed" ;
             ui->forward_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
@@ -42,21 +40,16 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             //backward
             ros_f->set_cmd_vel_msg(-1);
             ros_f->cmd_vel_publisher();
-
-//            rviz_obj->move_left_rear_b();
-//            rviz_obj->move_right_rear_b();
             ui->back_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_6:
             //right
             ros_f->servo_command_publisher(1);
             ui->right_label->setStyleSheet("QLabel { background-color : white; color : black; }");
-            //rviz_obj->turn_right_pressed();
             break;
         case Qt::Key_4:
             //left
             ros_f->servo_command_publisher(2);
-            //rviz_obj->turn_left_pressed();
             ui->left_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_A:
@@ -64,9 +57,11 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             ros_f->cmd_vel_publisher();
             break;
         case Qt::Key_Z:
+            //Led Off
             ros_f->led_command_publisher(0);
             break;
         case Qt::Key_X:
+            //Led On
             ros_f->led_command_publisher(1);
             break;
         }
@@ -102,7 +97,6 @@ void Manual_Window::keyReleaseEvent(QKeyEvent *event){
             break;
         case Qt::Key_Z:
             qDebug() << "stop";
-//            ui->back_label->setStyleSheet("");
             break;
         }
 

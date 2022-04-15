@@ -33,36 +33,33 @@ MainWindow::~MainWindow()
 {
     ros_obj->set_pwm_value(0);
     ros_obj->pwm_value_publisher();
-    ros_obj->qt_command_publisher(0);
+    ros_obj->qt_command_publisher(STOP);
     delete ui; delete ros_obj;
 }
 //Auto navigation from arduino
 void MainWindow::on_auto_button_clicked()
 {
-    ros_obj->qt_command_publisher(2);
+    ros_obj->qt_command_publisher(AUTONAV);
 }
 //Open dialog for manual teleop
 void MainWindow::on_Manual_clicked()
 {
-    ros_obj->qt_command_publisher(1);
+    ros_obj->qt_command_publisher(MANUAL);
+    // Open Dialog to control robot from keyboard
     manual_window->show();
     manual_window->exec();
-    ros_obj->qt_command_publisher(0);
+    // Stop the motors
+    ros_obj->qt_command_publisher(STOP);
 }
 //Stop Robot
 void MainWindow::on_Stop_clicked()
 {
-    ros_obj->qt_command_publisher(0);
-}
-//Set value for desirable PWM value
-void MainWindow::on_Set_value_clicked()
-{
-
+    ros_obj->qt_command_publisher(STOP);
 }
 //Publisher for pwm values
 void MainWindow::on_Publish_PWM_main_window_clicked()
 {
-    int pwm_value = ui->PWM_spinBox->text().toInt() * 2;
+    int pwm_value = ui->PWM_spinBox->text().toInt();
     ros_obj->set_pwm_value(pwm_value);
     ros_obj->pwm_value_publisher();
 }
@@ -84,22 +81,22 @@ void MainWindow::optical_encoder_measurements()
 //Check if motors works fine
 void MainWindow::on_check_dc_motor_clicked()
 {
-    ros_obj->qt_command_publisher(4);
+    ros_obj->qt_command_publisher(CHECKMOTORS);
 }
 //Turn on LED
 void MainWindow::on_lights_on_button_clicked()
 {
-    ros_obj->led_command_publisher(1);
+    ros_obj->led_command_publisher(ON);
 }
 //Turn off LED
 void MainWindow::on_lights_off_button_clicked()
 {
-    ros_obj->led_command_publisher(0);
+    ros_obj->led_command_publisher(OFF);
 }
 //Blink LED
 void MainWindow::on_lights_blinking_button_clicked()
 {
-    ros_obj->led_command_publisher(3);
+    ros_obj->led_command_publisher(BLINK);
 
 }
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -107,10 +104,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
         case Qt::Key_Z:
-        ros_obj->led_command_publisher(1);
+        ros_obj->led_command_publisher(ON);
         break;
         case Qt::Key_X:
-        ros_obj->led_command_publisher(0);
+        ros_obj->led_command_publisher(OFF);
         break;
     }
 }

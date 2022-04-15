@@ -20,12 +20,14 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     virtual ~MainWindow() override;
     virtual void keyPressEvent(QKeyEvent *event) override;
+    enum qtCommandToArduino {STOP = 0, MANUAL = 1, AUTONAV = 2, CHECKMOTORS = 4};
+    enum ledCommands {ON = 0, OFF = 1 , BLINK = 3};
 
 public Q_SLOTS:
     void on_auto_button_clicked();              //Auto navigation
     void on_Manual_clicked();                   //Manual dialog exec
     void on_Stop_clicked();                     //Stop robot
-    void on_Publish_PWM_main_window_clicked();
+    void on_Publish_PWM_main_window_clicked();  
     void on_Set_value_clicked();
     void ultrasonic_measurements();
     void optical_encoder_measurements();
