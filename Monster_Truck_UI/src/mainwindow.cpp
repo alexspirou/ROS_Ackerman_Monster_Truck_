@@ -60,7 +60,7 @@ void MainWindow::on_Stop_clicked()
 void MainWindow::on_Publish_PWM_main_window_clicked()
 {
     int pwm_value = ui->PWM_spinBox->text().toInt();
-    ros_obj->set_pwm_value(pwm_value);
+    ros_obj->set_pwm_value(pwm_value*2);
     ros_obj->pwm_value_publisher();
 }
 //Data from ultrasonic sensors
@@ -97,7 +97,6 @@ void MainWindow::on_lights_off_button_clicked()
 void MainWindow::on_lights_blinking_button_clicked()
 {
     ros_obj->led_command_publisher(BLINK);
-
 }
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {

@@ -5,6 +5,7 @@
 _Ros::_Ros()
 {
     n = new ros::NodeHandle();
+    // Create Publisher/Subscribers
     cmd_vel_pub = n->advertise<geometry_msgs::Twist>("cmd_vel", 200);
     pwm_value = n->advertise<geometry_msgs::Twist>("pwm_value", 200);
     qt_command = n->advertise<std_msgs::UInt16>("qt", 200);
