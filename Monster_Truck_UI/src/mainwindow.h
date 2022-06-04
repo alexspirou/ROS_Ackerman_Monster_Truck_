@@ -35,6 +35,7 @@ public Q_SLOTS:
     void on_lights_on_button_clicked();
     void on_lights_off_button_clicked();
     void on_lights_blinking_button_clicked();
+    void on_Set_value_clicked();
 
     Manual_Window* get_manual_window(){return manual_window; }
 private slots:
