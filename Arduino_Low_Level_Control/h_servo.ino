@@ -28,13 +28,15 @@ void turn_left(){
 
 
 }
-void manual_turn_right(){
+void manual_turn_right()
+{
   
   myservo.write(180);
   
 }
 
-void manual_turn_left(){
+void manual_turn_left()
+{
   myservo.write(0);
 }
 void check_servo(){
