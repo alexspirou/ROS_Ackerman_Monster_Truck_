@@ -28,14 +28,12 @@ public Q_SLOTS:
     void on_Manual_clicked();                   //Manual dialog exec
     void on_Stop_clicked();                     //Stop robot
     void on_Publish_PWM_main_window_clicked();  
-    void on_Set_value_clicked();
     void ultrasonic_measurements();
     void optical_encoder_measurements();
     void on_check_dc_motor_clicked();
     void on_lights_on_button_clicked();
     void on_lights_off_button_clicked();
     void on_lights_blinking_button_clicked();
-    void on_Set_value_clicked();
 
     Manual_Window* get_manual_window(){return manual_window; }
 private slots:
