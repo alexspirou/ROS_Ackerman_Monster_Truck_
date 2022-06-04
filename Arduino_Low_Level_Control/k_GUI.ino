@@ -60,11 +60,11 @@ void led_on_off()
        //ON/OFF LED
      if(led_msg == ON)
      {
-      digitalWrite(led_pin, LOW);
+      digitalWrite(led_pin, HIGH);
      }
      else if(led_msg == OFF)
      {
-      digitalWrite(led_pin, HIGH);
+      digitalWrite(led_pin, LOW);
      }
      else if(led_msg == BLINK)
      {
