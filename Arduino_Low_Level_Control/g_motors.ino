@@ -1,12 +1,8 @@
 void move_for(int sp_){
-    
 
     digitalWrite(in_1, LOW);
     digitalWrite(in_2, HIGH);
     analogWrite(en_a, sp_);
-   
-    
-
 }
 void stop_stop()
 {
