@@ -19,7 +19,7 @@ geometry_msgs::Vector3 ultrasonic_sensors;
 
 typedef enum { STOP = 0, MANUAL = 1, AUTONAV = 2 , CHECKMOTORS = 4 } commands;
 typedef enum  { ON = 0, OFF = 1, BLINK = 3} ledCommands;
-typedef enum  { LEFT = 0, RIGHT = 1} servoCommands;
+typedef enum  { RIGHT = 1, LEFT = 2 } servoCommands;
 
 std_msgs::Int32 rpm_msg;
 int led_msg = 0;
