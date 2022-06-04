@@ -7,7 +7,6 @@
 #include <Servo.h>
 #include <HardwareSerial.h>
 #include <geometry_msgs/Vector3.h>
-#include "TimerOne.h"
 
 
 //--ROS
