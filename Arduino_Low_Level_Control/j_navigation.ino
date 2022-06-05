@@ -1,13 +1,15 @@
 void auto_navigation(int& sp){
 
   int obstacle_distance = 25;
-  if(u1() > obstacle_distance && u2() > obstacle_distance && u3() > obstacle_distance){
+  // If there is not obstacle
+  if(u1() > obstacle_distance && u2() > obstacle_distance && u3() > obstacle_distance)
+  {
     move_for(sp);
     u1();u2();u3();
     calculate_rpm();
+    // If robot stucks but the ultrasensors are not seeing an obstacle 
     if(cm < 0.10){
       counter ++;
-      
       
     }
     if (counter > 6){
@@ -15,12 +17,13 @@ void auto_navigation(int& sp){
         u1();u2();u3();
         calculate_rpm();
         turn_right();
-        delay(500);
+        delay(1000);
+
         u1();u2();u3();
         calculate_rpm();
         move_backwards(sp);
         turn_left();
-        delay(500);
+        delay(1000);
         u1();u2();u3();
         calculate_rpm();
         counter = 0;
@@ -39,7 +42,7 @@ void auto_navigation(int& sp){
       turn_left();
       u1();u2();u3();
    }
-  else if(u1() <= obstacle_distance){
+  else if(u1() < obstacle_distance){
     stop_stop();
     u1();u2();u3();
     calculate_rpm();
