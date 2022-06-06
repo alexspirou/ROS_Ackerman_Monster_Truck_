@@ -80,13 +80,6 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="Set_value">
-       <property name="text">
-        <string>Set Value</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="Publish_PWM_main_window">
        <property name="text">
         <string>Publish</string>
