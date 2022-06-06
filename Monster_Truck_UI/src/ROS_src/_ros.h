@@ -23,6 +23,9 @@ class _Ros
 public:
     _Ros();
     ~_Ros();
+//Cameradialog.h
+//Cameradialog.cpp
+//Cameradialog.ui
 
     //cmd_vel topic
     //Publish to cmd_vel pwm values

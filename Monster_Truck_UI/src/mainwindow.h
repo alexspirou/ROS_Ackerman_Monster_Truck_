@@ -7,6 +7,7 @@
 #include "../src/ROS_src/_ros.h"
 #include "Events/keyboard_events.h"
 #include "Manual_Window/manual_window.h"
+#include "Camera_Window/Cameradialog.h"
 
 
 namespace Ui {
@@ -34,9 +35,9 @@ public Q_SLOTS:
     void on_lights_on_button_clicked();
     void on_lights_off_button_clicked();
     void on_lights_blinking_button_clicked();
-
+    void on_m_CameraDlgBtn_clicked();
     Manual_Window* get_manual_window(){return manual_window; }
-private slots:
+
 
 private:
     Ui::MainWindow *ui;
@@ -44,7 +45,7 @@ private:
     QTimer* timer;
     Keyboard_Events key;
     Manual_Window* manual_window;
-
+    CameraDialog* m_CameraWindow;
 };
 
 #endif // MAINWINDOW_H

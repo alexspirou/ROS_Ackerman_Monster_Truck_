@@ -286,6 +286,19 @@
      <string>BLINKING LIGHT</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="m_CameraDlgBtn">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>290</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Camera</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

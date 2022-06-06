@@ -5,7 +5,6 @@
 #include "QDebug"
 #include "QProcess"
 #include "Events/keyboard_events.h"
-
 //ROS MSGS
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -23,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //manual window
     manual_window = new Manual_Window();
-
+    m_CameraWindow = new CameraDialog();
     //ROS
     ros_obj = new _Ros();
     ros_obj->ultrasonic_subscriber();
@@ -34,7 +33,7 @@ MainWindow::~MainWindow()
     ros_obj->set_pwm_value(0);
     ros_obj->pwm_value_publisher();
     ros_obj->qt_command_publisher(STOP);
-    delete ui; delete ros_obj;
+    delete ui; delete ros_obj; delete m_CameraWindow;
 }
 //Auto navigation from arduino
 void MainWindow::on_auto_button_clicked()
@@ -109,4 +108,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         ros_obj->led_command_publisher(OFF);
         break;
     }
+}
+
+void MainWindow::on_m_CameraDlgBtn_clicked()
+{
+    m_CameraWindow->show();
+
 }
