@@ -47,20 +47,20 @@
       <height>219</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="m_CameraStartButon">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>150</y>
-       <width>89</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="m_CameraStartButon">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
   </widget>
  </widget>
  <resources/>
