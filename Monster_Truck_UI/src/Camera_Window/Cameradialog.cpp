@@ -50,6 +50,7 @@ void CameraDialog::on_m_CameraStartButon_clicked()
     {
        qDebug() << (device.deviceName());
     }
+    qDebug() << "Here";
 
     m_Camera->start();
 }
