@@ -23,6 +23,9 @@ public:
     explicit CameraDialog(QWidget *parent = nullptr);
     ~CameraDialog();
 
+private slots:
+    void on_m_CameraStartButon_clicked();
+
 private:
     Ui::CameraDialog *ui;
 

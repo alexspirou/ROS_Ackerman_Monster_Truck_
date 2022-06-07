@@ -40,3 +40,8 @@ CameraDialog::~CameraDialog()
     delete m_Camera; delete m_CameraViewFinder;
     delete m_CameraImapgeCapture; delete m_Layout;
 }
+
+void CameraDialog::on_m_CameraStartButon_clicked()
+{
+    m_Camera->start();
+}
