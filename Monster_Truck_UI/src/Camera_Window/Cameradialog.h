@@ -23,7 +23,7 @@ public:
     explicit CameraDialog(QWidget *parent = nullptr);
     ~CameraDialog();
 
-
+public Q_SLOTS:
     void on_m_CameraStartButon_clicked();
     void on_m_CameraStopButton_clicked();
 

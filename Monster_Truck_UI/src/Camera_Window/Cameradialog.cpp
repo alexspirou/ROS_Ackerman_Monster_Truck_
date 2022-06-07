@@ -33,6 +33,9 @@ CameraDialog::CameraDialog(QWidget *parent) :
     ui->scrollArea->setLayout(m_Layout);
 //    connect(m_StartCamera, &QAction::triggered, [&](){m_Camera->start(); } );
 //    connect(m_StopCamera, &QAction::triggered, [&](){m_Camera->stop(); } );
+
+
+    qDebug() << "Constructor";
 }
 
 CameraDialog::~CameraDialog()
@@ -40,6 +43,11 @@ CameraDialog::~CameraDialog()
     delete ui;
     delete m_Camera; delete m_CameraViewFinder;
     delete m_CameraImapgeCapture; delete m_Layout;
+    auto const camList = QCameraInfo::availableCameras();
+    for(auto const& device : camList)
+    {
+       qDebug() << (device.deviceName());
+    }
 }
 
 void CameraDialog::on_m_CameraStartButon_clicked()
@@ -58,4 +66,5 @@ void CameraDialog::on_m_CameraStartButon_clicked()
 void CameraDialog::on_m_CameraStopButton_clicked()
 {
     m_Camera->stop();
+     qDebug() << "Stop";
 }
