@@ -19,19 +19,19 @@ CameraDialog::CameraDialog(QWidget *parent) :
     m_CameraImapgeCapture = new QCameraImageCapture(m_Camera, this);
     m_Layout = new QVBoxLayout;
 
-    m_Options = new QMenu("Option", this);
-    m_StartCamera = new QAction("Start Camera", this);
-    m_StopCamera = new QAction("Stop Camera", this);
+//    m_Options = new QMenu("Option", this);
+//    m_StartCamera = new QAction("Start Camera", this);
+//    m_StopCamera = new QAction("Stop Camera", this);
 
-    m_Options->addActions({m_StartCamera, m_StopCamera});
+//    m_Options->addActions({m_StartCamera, m_StopCamera});
+
     m_Camera->setViewfinder(m_CameraViewFinder);
     m_Layout->addWidget(m_CameraViewFinder);
     m_Layout->setMargin(0);
 
     ui->scrollArea->setLayout(m_Layout);
-     m_Camera->start();
-    connect(m_StartCamera, &QAction::triggered, [&](){m_Camera->start(); } );
-    connect(m_StopCamera, &QAction::triggered, [&](){m_Camera->stop(); } );
+//    connect(m_StartCamera, &QAction::triggered, [&](){m_Camera->start(); } );
+//    connect(m_StopCamera, &QAction::triggered, [&](){m_Camera->stop(); } );
 }
 
 CameraDialog::~CameraDialog()
@@ -44,4 +44,9 @@ CameraDialog::~CameraDialog()
 void CameraDialog::on_m_CameraStartButon_clicked()
 {
     m_Camera->start();
+}
+
+void CameraDialog::on_m_CameraStopButton_clicked()
+{
+    m_Camera->stop();
 }

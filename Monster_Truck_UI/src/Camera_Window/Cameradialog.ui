@@ -62,6 +62,19 @@
     <string>PushButton</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="m_CameraStopButton">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>30</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
