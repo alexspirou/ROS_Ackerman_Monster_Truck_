@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QMenu>
 #include <QAction>
+#include <QCameraInfo>
 #include <QScrollArea>
 
 CameraDialog::CameraDialog(QWidget *parent) :
@@ -43,6 +44,13 @@ CameraDialog::~CameraDialog()
 
 void CameraDialog::on_m_CameraStartButon_clicked()
 {
+
+    auto const camList = QCameraInfo::availableCameras();
+    for(auto const& device : camList)
+    {
+       qDebug() << (device.deviceName());
+    }
+
     m_Camera->start();
 }
 
