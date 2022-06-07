@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>577</width>
+    <width>582</width>
     <height>403</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>551</width>
+     <width>561</width>
      <height>341</height>
     </rect>
    </property>
@@ -45,14 +45,14 @@
   <widget class="QPushButton" name="m_CameraStopButton">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>400</x>
      <y>0</y>
      <width>171</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Stop</string>
+    <string>Stop Camera</string>
    </property>
   </widget>
  </widget>
