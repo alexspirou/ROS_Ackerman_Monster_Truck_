@@ -39,7 +39,9 @@ private:
     QAction* m_StartCamera;
     QAction* m_StopCamera;
 
-    QScrollArea* m_ScrollArea;
+   // QScrollArea* m_ScrollArea;
+
+    QScrollArea* frame;
 
 };
 

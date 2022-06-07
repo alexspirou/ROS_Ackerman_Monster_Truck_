@@ -20,19 +20,23 @@ CameraDialog::CameraDialog(QWidget *parent) :
     m_CameraImapgeCapture = new QCameraImageCapture(m_Camera, this);
     m_Layout = new QVBoxLayout;
 
-//    m_Options = new QMenu("Option", this);
-//    m_StartCamera = new QAction("Start Camera", this);
-//    m_StopCamera = new QAction("Stop Camera", this);
+    // Actions Menu
+    m_Options = new QMenu("Option", this);
+    m_StartCamera = new QAction("Start Camera", this);
+    m_StopCamera = new QAction("Stop Camera", this);
+    m_Options->addActions({m_StartCamera, m_StopCamera});
 
-//    m_Options->addActions({m_StartCamera, m_StopCamera});
-
+    // Camera setup
     m_Camera->setViewfinder(m_CameraViewFinder);
     m_Layout->addWidget(m_CameraViewFinder);
     m_Layout->setMargin(0);
+    ui->frame->setLayout(m_Layout);
 
-    ui->scrollArea->setLayout(m_Layout);
-//    connect(m_StartCamera, &QAction::triggered, [&](){m_Camera->start(); } );
-//    connect(m_StopCamera, &QAction::triggered, [&](){m_Camera->stop(); } );
+    connect(m_StartCamera, &QAction::triggered, [&]()
+    {
+        m_Camera->start();
+    } );
+    connect(m_StopCamera, &QAction::triggered, [&](){m_Camera->stop(); } );
 
 
     qDebug() << "Constructor";

@@ -38,6 +38,7 @@ find_package(Qt5 REQUIRED COMPONENTS
                 Widgets
                 Multimedia
                 MultimediaWidgets
+
             )
 
 QT5_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
