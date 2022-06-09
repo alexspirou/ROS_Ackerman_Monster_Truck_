@@ -24,6 +24,8 @@ public:
     virtual void keyPressEvent(QKeyEvent *event) override;
     virtual void keyReleaseEvent(QKeyEvent *event) override;
     enum servoCommands {RIGHT = 1, LEFT = 2};
+    enum motorCommands { BACKWARDS = -1 , FORWARD = 1, STOP = 0};
+    enum ledCommands { OFF = 0 , ON = 1};
 
 public Q_SLOTS:
     void on_info_button_clicked();
