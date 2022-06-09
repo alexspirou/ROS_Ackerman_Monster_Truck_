@@ -23,6 +23,7 @@ public:
     virtual ~Manual_Window() override;
     virtual void keyPressEvent(QKeyEvent *event) override;
     virtual void keyReleaseEvent(QKeyEvent *event) override;
+    enum servoCommands {RIGHT = 1, LEFT = 2};
 
 public Q_SLOTS:
     void on_info_button_clicked();

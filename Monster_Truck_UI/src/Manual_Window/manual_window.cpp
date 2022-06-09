@@ -31,7 +31,7 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
     switch(event->key()) {
         case Qt::Key_8:
             //forward
-            ros_f->set_cmd_vel_msg(1);
+            ros_f->set_cmd_vel_msg(1); 
             ros_f->cmd_vel_publisher();
             qDebug() << "pressed" ;
             ui->forward_label->setStyleSheet("QLabel { background-color : white; color : black; }");
@@ -44,12 +44,12 @@ void Manual_Window::keyPressEvent(QKeyEvent *event){
             break;
         case Qt::Key_6:
             //right
-            ros_f->servo_command_publisher(1);
+            ros_f->servo_command_publisher(RIGHT);
             ui->right_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_4:
             //left
-            ros_f->servo_command_publisher(2);
+            ros_f->servo_command_publisher(LEFT);
             ui->left_label->setStyleSheet("QLabel { background-color : white; color : black; }");
             break;
         case Qt::Key_A:

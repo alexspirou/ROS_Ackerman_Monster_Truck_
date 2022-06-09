@@ -3,22 +3,23 @@
 #include <geometry_msgs/Twist.h>
 #include <std_msgs/Int32.h>
 #include <std_msgs/UInt16.h>
+#include <std_msgs/String.h>
 #include <sensor_msgs/Range.h>
 #include <Servo.h>
 #include <HardwareSerial.h>
 #include <geometry_msgs/Vector3.h>
 
+typedef enum { STOP = 0, MANUAL = 1, AUTONAV = 2 , CHECKMOTORS = 4 } commands;
+typedef enum  { ON = 0, OFF = 1, BLINK = 3} ledCommands;
+typedef enum  { RIGHT = 1, LEFT = 2 } servoCommands;
 
 //--ROS
 ros::NodeHandle* nh = new ros::NodeHandle();
 
 //--Variables for each message
-///
+//
 geometry_msgs::Vector3 ultrasonic_sensors;
-
-typedef enum { STOP = 0, MANUAL = 1, AUTONAV = 2 , CHECKMOTORS = 4 } commands;
-typedef enum  { ON = 0, OFF = 1, BLINK = 3} ledCommands;
-typedef enum  { RIGHT = 1, LEFT = 2 } servoCommands;
+std_msgs::String log_msgs;
 
 std_msgs::Int32 rpm_msg;
 int led_msg = 0;
@@ -83,7 +84,7 @@ void callback_qt(const std_msgs::UInt16& qt_msg_f);
 void callback_led(const std_msgs::UInt16& led_msg_f);
 void rpm_publisher();
 void ultrasonic_sensors_publisher_call();
-
+void log_file_publisher_call();
 //--Ultrasonic
 int u1();
 int u2();

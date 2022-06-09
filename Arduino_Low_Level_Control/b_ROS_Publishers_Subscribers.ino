@@ -1,6 +1,7 @@
 //--Publishers
 ros::Publisher  optical_encoder_publisher("optical_encoder", &rpm_msg); 
 ros::Publisher  ultrasonic_sensors_publisher("ultrasonic_sensors", &ultrasonic_sensors); 
+ros::Publisher  log_file_publisher("log file", &log_msgs); 
 
 
 //--Subscribers

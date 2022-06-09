@@ -34,3 +34,8 @@ void ultrasonic_sensors_publisher_call()
   ultrasonic_sensors.z = u3();
   ultrasonic_sensors_publisher.publish(&ultrasonic_sensors);
 }
+
+void log_file_publisher_call()
+{
+
+}

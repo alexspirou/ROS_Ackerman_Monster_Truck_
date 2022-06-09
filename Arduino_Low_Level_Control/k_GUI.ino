@@ -14,7 +14,7 @@ void manual_GUI(){
        {
         move_for(motor_speed);
        }
-       else if(sp<0)
+       else if(sp < 0)
        {
         move_backwards(motor_speed);
        }
